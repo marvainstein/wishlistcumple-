@@ -19,7 +19,7 @@
   position: absolute;
   inset: 44%;
   border-radius: 50%;
-  background: var(--sky-blue);
+  background: var(--rug-dark);
   box-shadow: inset 0 2px 4px rgba(43, 33, 80, 0.35);
 }
 .cd::after {

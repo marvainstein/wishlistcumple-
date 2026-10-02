@@ -6,7 +6,7 @@ export function FinalCta() {
     <section className="final" aria-labelledby="final-title">
       <div className="final__inner">
         <CompactDisc className="final__cd" />
-        <div className="final__copy">
+        <div className="final__copy on-rug">
           <p className="final__kicker lcd">FIN DEL DISCO</p>
           <h2 id="final-title" className="final__title">
             gracias por pensar en mí <span aria-hidden="true">♥</span>

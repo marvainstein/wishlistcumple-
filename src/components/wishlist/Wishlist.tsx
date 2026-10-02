@@ -49,7 +49,7 @@ export function Wishlist({ products, reservations, onOpen }: WishlistProps) {
   return (
     <section id="wishlist" className="wishlist" aria-labelledby="wishlist-title">
       <div className="wishlist__head">
-        <div className="wishlist__titles">
+        <div className="wishlist__titles on-rug">
           <p className="wishlist__kicker">
             <span className="lcd">C:\deseos\</span>
           </p>

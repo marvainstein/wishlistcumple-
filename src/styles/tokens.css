@@ -15,6 +15,13 @@
   --screen: #fffaf1;       /* "pantalla" crema dentro de las ventanas */
   --paper: #fff3a8;        /* post-it */
 
+  /* alfombra (fallback CSS si no hay WebGL) */
+  --rug: #8a5527;
+  --rug-dark: #2a1408;
+  --on-rug: #fff4e2;       /* texto directo sobre la alfombra */
+  --on-rug-soft: #f6dcc0;
+  --rug-shadow: 0 2px 0 rgba(30, 12, 2, 0.55), 0 4px 18px rgba(30, 12, 2, 0.6);
+
   /* tinta (nunca negro puro) */
   --ink: #2b2150;
   --ink-soft: #5b4f86;
