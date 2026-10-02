@@ -9,6 +9,7 @@ import { HowItWorks } from './components/sections/HowItWorks';
 import { FinalCta } from './components/sections/FinalCta';
 import { ProductWindow } from './components/modal/ProductWindow';
 import { ClickSparkles } from './components/decor/ClickSparkles';
+import { Scene } from './components/decor/Decor';
 
 export default function App() {
   const reservations = useReservations();
@@ -26,6 +27,7 @@ export default function App() {
 
   return (
     <>
+      <Scene />
       <a className="skip-link" href="#wishlist">
         Saltar a la wishlist
       </a>

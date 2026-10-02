@@ -1,9 +1,6 @@
 /* ---------- el pasto: todo lo que viene después del hero ---------- */
 .meadow {
   position: relative;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Cg stroke='%2390d84a' stroke-width='1.6' stroke-linecap='round' fill='none' opacity='.55'%3E%3Cpath d='M6 40 q2-9 0-16'/%3E%3Cpath d='M22 40 q-3-8 1-14'/%3E%3Cpath d='M40 40 q2-10-2-17'/%3E%3Cpath d='M52 40 q-2-7 1-12'/%3E%3C/g%3E%3C/svg%3E"),
-    linear-gradient(180deg, var(--grass) 0, var(--grass-mid) 60%, #3f9426 100%);
 }
 
 /* ---------- ticker: tubo inflable con display LCD ---------- */
@@ -172,10 +169,7 @@
   overflow: hidden;
   padding: clamp(40px, 7vw, 90px) var(--gutter) 28px;
 }
-.final__flowers {
-  top: auto;
-  height: 90px;
-}
+
 .final__inner {
   position: relative;
   display: grid;
@@ -185,35 +179,10 @@
   max-width: 1080px;
   margin: 0 auto;
 }
-.final__sunset {
-  position: relative;
-  aspect-ratio: 1;
-  width: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 70%, #ffe7a0, #ffb36b 40%, #ff8fb3 70%, #8fc3ff 100%);
-  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.6), inset 0 18px 30px rgba(255, 255, 255, 0.6), var(--shadow-drop);
-}
 .final .final__sun {
-  --size: 70%;
-  left: 15%;
-  top: 30%;
-  transition: translate 1.2s var(--ease-spring);
-}
-.final__inner:hover .final__sun {
-  translate: 0 -12%;
-}
-.final__hill {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
+  --size: 100%;
   width: 100%;
-  height: 38%;
-}
-.final__critter {
-  width: 22%;
-  right: 16%;
-  bottom: 18%;
 }
 .final__copy {
   display: grid;
@@ -256,7 +225,7 @@
   .final__inner {
     grid-template-columns: minmax(0, 1fr);
   }
-  .final__sunset {
+  .final .final__sun {
     width: 160px;
     justify-self: center;
   }
