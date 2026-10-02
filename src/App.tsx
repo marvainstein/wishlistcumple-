@@ -9,7 +9,6 @@ import { HowItWorks } from './components/sections/HowItWorks';
 import { FinalCta } from './components/sections/FinalCta';
 import { ProductWindow } from './components/modal/ProductWindow';
 import { ClickSparkles } from './components/decor/ClickSparkles';
-import { FurBackground } from './components/decor/fur/FurBackground';
 
 export default function App() {
   const reservations = useReservations();
@@ -27,17 +26,18 @@ export default function App() {
 
   return (
     <>
-      <FurBackground />
       <a className="skip-link" href="#wishlist">
         Saltar a la wishlist
       </a>
       <MenuBar mode={reservations.mode} />
       <main>
         <Hero featured={featured} total={products.length} reservedCount={reservedCount} onOpen={handleOpen} />
-        <Ticker total={products.length} reserved={reservedCount} />
-        <HowItWorks />
-        <Wishlist products={products} reservations={reservations} onOpen={handleOpen} />
-        <FinalCta />
+        <div className="meadow">
+          <Ticker total={products.length} reserved={reservedCount} />
+          <HowItWorks />
+          <Wishlist products={products} reservations={reservations} onOpen={handleOpen} />
+          <FinalCta />
+        </div>
       </main>
       <ProductWindow
         product={openProduct}

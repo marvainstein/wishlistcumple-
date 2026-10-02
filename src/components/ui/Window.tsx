@@ -31,7 +31,7 @@ export function Window({
   labelledBy,
 }: WindowProps) {
   return (
-    <Tag className={`win ${className}`} data-color={color} style={style} aria-labelledby={labelledBy}>
+    <Tag className={`win inflatable ${className}`} data-color={color} style={style} aria-labelledby={labelledBy}>
       <div className="win__bar">
         {onClose ? (
           <div className="win__lights">

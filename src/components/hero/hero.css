@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: calc(var(--menubar-h) + clamp(28px, 6vw, 72px)) var(--gutter) clamp(48px, 7vw, 96px);
+  padding: calc(var(--menubar-h) + clamp(28px, 6vw, 72px)) var(--gutter) 0;
   overflow: hidden;
 }
 
@@ -13,6 +13,7 @@
   align-items: center;
   max-width: 1320px;
   margin: 0 auto;
+  z-index: 2;
 }
 
 /* ---------- íconos de escritorio ---------- */
@@ -90,9 +91,8 @@
   gap: clamp(16px, 2.2vw, 24px);
   padding: clamp(20px, 4vw, 44px) clamp(18px, 4vw, 48px) clamp(22px, 3.5vw, 36px);
   background:
-    radial-gradient(120% 80% at 100% 0%, rgba(255, 138, 31, 0.12), transparent 60%),
-    radial-gradient(90% 70% at 0% 100%, rgba(75, 102, 255, 0.1), transparent 60%),
-    var(--screen);
+    radial-gradient(120% 80% at 100% 0%, rgba(255, 210, 58, 0.18), transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, rgba(59, 143, 232, 0.12), transparent 60%);
 }
 
 .hero__eyebrow {
@@ -153,14 +153,14 @@
   pointer-events: none;
 }
 .hero__word--wish {
-  --g1: #ff9a3d;
-  --g2: #ff5a94;
-  --g3: #c2275f;
+  --g1: #ff6b5c;
+  --g2: #ef3b36;
+  --g3: #9e1714;
 }
 .hero__word--list {
-  --g1: #6f86ff;
-  --g2: #9d63ff;
-  --g3: #4325a8;
+  --g1: #a97cf0;
+  --g2: #8b55d6;
+  --g3: #4c2391;
   margin-left: 0.55em;
 }
 .hero__tag {
@@ -215,7 +215,7 @@
   border-radius: inherit;
   background:
     repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.45) 0 6px, transparent 6px 12px),
-    linear-gradient(180deg, #8de7ff, var(--blueberry));
+    linear-gradient(180deg, #c8f07a, var(--lime-dark));
   transition: width 0.8s var(--ease-spring);
 }
 .hero__meter-num {
@@ -224,26 +224,28 @@
   color: var(--ink);
 }
 
-/* ---------- decoración ---------- */
-.hero__cd {
-  width: clamp(130px, 16vw, 230px);
-  top: -30px;
-  left: calc(84px + clamp(16px, 3vw, 44px) + min(760px, 58vw) - 120px);
-  z-index: 1;
-  transform: rotate(-10deg);
+/* ---------- cielo, sol, nubes ---------- */
+.hero__sky {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
-.hero__window:hover ~ .hero__cd,
-.hero__cd:hover {
-  animation: spin 3s linear infinite;
+.hero__sun {
+  --size: clamp(220px, 24vw, 360px);
+  top: clamp(20px, 3vw, 50px);
+  right: clamp(-40px, 6vw, 140px);
+  animation: sun-rise 1.8s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
 }
-.hero__floppy {
-  bottom: -64px;
-  left: -14px;
-  z-index: 3;
-  --rot: -12deg;
-  transform: rotate(-12deg);
-  animation: bob 6s ease-in-out infinite;
+@keyframes sun-rise {
+  from { translate: 0 60%; opacity: 0.3; }
+  to { translate: 0 0; opacity: 1; }
 }
+.hero__cloud--1 { top: 90px; left: 4%; --drift: 80s; --drift-x: 90px; }
+.hero__cloud--2 { top: 220px; left: 38%; width: 160px; height: 60px; --drift: 60s; --drift-x: -70px; opacity: 0.9; }
+.hero__cloud--3 { top: 60px; left: 62%; width: 260px; height: 92px; --drift: 95s; --drift-x: -110px; }
+.hero__cloud--4 { top: 360px; left: 82%; width: 180px; height: 64px; --drift: 70s; --drift-x: 60px; opacity: 0.85; }
+
 .hero__spark {
   z-index: 3;
   fill: #fff;
@@ -251,9 +253,47 @@
 .hero__spark--1 { top: 10px; left: 110px; width: 30px; height: 30px; }
 .hero__spark--2 { bottom: 40px; right: 40%; width: 18px; height: 18px; }
 
+/* ---------- colinas ---------- */
+.hero__land {
+  position: relative;
+  z-index: 1;
+  margin: clamp(-120px, -8vw, -60px) calc(var(--gutter) * -1) 0;
+  pointer-events: none;
+}
+.hero__land .hills--back {
+  position: relative;
+}
+.hero__front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+.hero__flowers {
+  z-index: 3;
+  top: 62%;
+  bottom: 0;
+}
+.hero__critter {
+  z-index: 1;
+  width: clamp(64px, 8vw, 110px);
+  animation: peek 1.2s var(--ease-spring) both;
+}
+.hero__critter--1 { left: 6%; bottom: 18%; rotate: -8deg; animation-delay: 1s; }
+.hero__critter--2 { left: 30%; bottom: 34%; width: clamp(44px, 5.5vw, 76px); animation-delay: 1.2s; }
+.hero__critter--3 { left: 62%; bottom: 30%; width: clamp(50px, 6vw, 84px); animation-delay: 1.35s; }
+.hero__critter--4 { right: 7%; bottom: 14%; rotate: 6deg; animation-delay: 1.5s; }
+@keyframes peek {
+  from { translate: 0 70%; }
+  to { translate: 0 0; }
+}
+
 /* ---------- stickers de productos ---------- */
 .hero__stickers {
   grid-area: stickers;
+  align-self: end;
+  margin-top: clamp(120px, 14vw, 220px);
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -344,10 +384,6 @@
   .desk-icons {
     display: none;
   }
-  .hero__cd {
-    left: auto;
-    right: 230px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -356,16 +392,8 @@
     grid-template-areas: 'window' 'stickers';
     gap: 34px;
   }
-  .hero__cd {
-    width: 120px;
-    top: -36px;
-    right: -34px;
-    left: auto;
-  }
-  .hero__floppy {
-    display: none;
-  }
   .hero__stickers {
+    margin-top: 0;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
     padding-inline: 4px;
@@ -389,8 +417,14 @@
     right: 2%;
     bottom: -26px;
   }
-  .hero__spark {
+  .hero__spark,
+  .hero__cloud--2,
+  .hero__cloud--4 {
     display: none;
+  }
+  .hero__sun {
+    top: 54px;
+    right: -50px;
   }
   .hero__window .win__status span:last-child {
     display: none;

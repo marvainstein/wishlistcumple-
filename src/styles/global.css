@@ -19,27 +19,22 @@ body {
   font-size: var(--t-md);
   line-height: 1.55;
   color: var(--ink);
-  /* alfombra animal print: el canvas WebGL la dibuja encima; esto es el respaldo */
-  background-color: var(--rug);
-  background-image:
-    radial-gradient(circle at 30% 40%, var(--rug-dark) 0 9px, transparent 10px),
-    radial-gradient(circle at 70% 75%, var(--rug-dark) 0 6px, transparent 7px),
-    radial-gradient(circle at 78% 22%, transparent 0 6px, var(--rug-dark) 7px 12px, transparent 13px),
-    linear-gradient(160deg, #c98a48, var(--rug) 60%, #6e3f18);
-  background-size: 74px 74px, 52px 52px, 90px 90px, 100% 100%;
-  background-attachment: fixed;
+  /* cielo arriba; el pasto lo pone .meadow */
+  background-color: var(--grass-mid);
+  background-image: linear-gradient(180deg, var(--sky-top) 0, var(--sky-mid) 520px, var(--sky-low) 900px, var(--sky-low) 1100px);
+  background-repeat: no-repeat;
   overflow-x: hidden;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='26' viewBox='0 0 22 26'%3E%3Cpath d='M2 2 L2 20 L7 15.5 L10.5 23 L14 21.5 L10.6 14.2 L17.5 14 Z' fill='%23fff' stroke='%232b2150' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 2, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='26' viewBox='0 0 22 26'%3E%3Cpath d='M2 2 L2 20 L7 15.5 L10.5 23 L14 21.5 L10.6 14.2 L17.5 14 Z' fill='%23fff' stroke='%231c2a56' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 2, auto;
 }
 
-/* grano sutil sobre todo (plástico + papel, no glass) */
+/* grano sutil sobre todo (que no quede digital y liso) */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 200;
-  opacity: 0.07;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -47,7 +42,7 @@ a,
 button,
 [role='button'],
 label {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26' viewBox='0 0 24 26'%3E%3Cpath d='M8 2.5c1.2 0 2 .9 2 2V12l1-.2V9.8c0-1.1.9-2 2-2s2 .9 2 2v2.4l.8-.1c1.2-.2 2.2.7 2.2 1.9v1.1l.4-.1c1.2-.2 2.1.7 2.1 1.9V19c0 2.8-2.3 5-5 5h-4.2c-1.5 0-2.9-.7-3.9-1.8L3 17.4c-.8-.9-.7-2.2.2-2.9.8-.6 1.9-.5 2.6.2L6 15V4.5c0-1.1.9-2 2-2z' fill='%23fff' stroke='%232b2150' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E") 8 2, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26' viewBox='0 0 24 26'%3E%3Cpath d='M8 2.5c1.2 0 2 .9 2 2V12l1-.2V9.8c0-1.1.9-2 2-2s2 .9 2 2v2.4l.8-.1c1.2-.2 2.2.7 2.2 1.9v1.1l.4-.1c1.2-.2 2.1.7 2.1 1.9V19c0 2.8-2.3 5-5 5h-4.2c-1.5 0-2.9-.7-3.9-1.8L3 17.4c-.8-.9-.7-2.2.2-2.9.8-.6 1.9-.5 2.6.2L6 15V4.5c0-1.1.9-2 2-2z' fill='%23fff' stroke='%231c2a56' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E") 8 2, pointer;
 }
 
 main {
@@ -82,7 +77,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--blueberry);
+  outline: 3px solid var(--grape);
   outline-offset: 3px;
   border-radius: 8px;
 }
@@ -202,21 +197,53 @@ button {
   --c: var(--grape);
   --c-dark: var(--grape-dark);
 }
-.win {
+/*
+ * Plástico inflable transparente (PVC cristal): casi no tiñe ni difumina lo de atrás,
+ * pero tiene borde "inflado" con brillos fuertes, costura soldada y un leve tinte de color.
+ */
+.inflatable {
   position: relative;
-  padding: var(--bezel);
   border-radius: var(--r-lg);
-  /* bisel: color translúcido + rayas internas de carcasa iMac + brillo */
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 30%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 7px),
-    color-mix(in srgb, var(--c) 78%, transparent);
-  border: 1.5px solid color-mix(in srgb, var(--c-dark) 70%, transparent);
+    radial-gradient(130% 70% at 18% 0%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 46%),
+    radial-gradient(90% 60% at 100% 100%, color-mix(in srgb, var(--c) 30%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08));
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
   box-shadow:
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -10px 18px color-mix(in srgb, var(--c-dark) 40%, transparent),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+    inset 0 12px 20px -8px rgba(255, 255, 255, 0.95),
+    inset 8px 0 16px -10px rgba(255, 255, 255, 0.9),
+    inset -8px 0 16px -10px rgba(255, 255, 255, 0.7),
+    inset 0 -16px 26px -12px color-mix(in srgb, var(--c-dark) 55%, rgba(18, 60, 120, 0.5)),
     var(--shadow-drop);
-  backdrop-filter: blur(3px) saturate(1.2);
+  backdrop-filter: blur(1.5px) saturate(1.6) brightness(1.05);
+  -webkit-backdrop-filter: blur(1.5px) saturate(1.6) brightness(1.05);
+}
+/* reflejo especular curvo + costura soldada */
+.inflatable::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 22px;
+  width: min(42%, 260px);
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4) 70%, rgba(255, 255, 255, 0));
+  filter: blur(0.6px);
+  pointer-events: none;
+}
+.inflatable::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  inset: 4px;
+  border-radius: calc(var(--r-lg) - 4px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+.win {
+  padding: var(--bezel);
 }
 
 .win__bar {
@@ -224,8 +251,8 @@ button {
   align-items: center;
   gap: 10px;
   min-height: 34px;
-  padding: 2px 6px 8px 8px;
-  color: var(--c-ink, #fff);
+  padding: 2px 6px 9px 8px;
+  color: var(--ink);
 }
 
 .win__lights {
@@ -258,16 +285,19 @@ button {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .win__screen {
   position: relative;
   border-radius: calc(var(--r-lg) - var(--bezel) + 2px);
   background: var(--screen);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
   box-shadow:
-    inset 0 2px 6px rgba(43, 33, 80, 0.22),
-    inset 0 0 0 1px rgba(43, 33, 80, 0.12);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 3px 10px rgba(255, 255, 255, 0.8),
+    0 1px 2px rgba(18, 60, 120, 0.15);
   overflow: hidden;
 }
 
@@ -279,8 +309,8 @@ button {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.05em;
-  color: var(--c-ink, #fff);
-  opacity: 0.92;
+  color: var(--ink);
+  opacity: 0.85;
 }
 
 /* ------------------------------------------------------------------ */
@@ -366,18 +396,13 @@ button {
   }
 }
 
-/* sombra difusa detrás de textos que van directo sobre la alfombra */
-.on-rug {
-  position: relative;
-  isolation: isolate;
-}
-.on-rug::before {
-  content: '';
-  position: absolute;
-  inset: -36px -48px;
-  z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(30, 12, 2, 0.62), rgba(30, 12, 2, 0.35) 60%, transparent);
-  filter: blur(14px);
-  pointer-events: none;
+/* burbuja lechosa detrás de textos que van directo sobre el pasto */
+.bubble-text {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.9), inset 0 6px 10px -6px #fff, 0 10px 20px -12px rgba(23, 74, 18, 0.6);
+  color: var(--ink);
 }
