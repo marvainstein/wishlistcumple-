@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: calc(var(--menubar-h) + clamp(28px, 6vw, 72px)) var(--gutter) 0;
+  padding: calc(var(--menubar-h) + clamp(28px, 6vw, 72px)) var(--gutter) clamp(70px, 9vw, 120px);
   overflow: hidden;
 }
 
@@ -224,70 +224,24 @@
   color: var(--ink);
 }
 
-/* ---------- cielo, sol, nubes ---------- */
-.hero__sky {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
+/* ---------- sol ---------- */
 .hero__sun {
-  --size: clamp(220px, 24vw, 360px);
-  top: clamp(20px, 3vw, 50px);
-  right: clamp(-40px, 6vw, 140px);
+  --size: clamp(240px, 26vw, 400px);
+  top: clamp(10px, 2vw, 40px);
+  right: clamp(-40px, 5vw, 120px);
+  z-index: 1;
   animation: sun-rise 1.8s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
 }
 @keyframes sun-rise {
-  from { translate: 0 60%; opacity: 0.3; }
+  from { translate: 0 60%; opacity: 0; }
   to { translate: 0 0; opacity: 1; }
 }
-.hero__cloud--1 { top: 90px; left: 4%; --drift: 80s; --drift-x: 90px; }
-.hero__cloud--2 { top: 220px; left: 38%; width: 160px; height: 60px; --drift: 60s; --drift-x: -70px; opacity: 0.9; }
-.hero__cloud--3 { top: 60px; left: 62%; width: 260px; height: 92px; --drift: 95s; --drift-x: -110px; }
-.hero__cloud--4 { top: 360px; left: 82%; width: 180px; height: 64px; --drift: 70s; --drift-x: 60px; opacity: 0.85; }
-
 .hero__spark {
   z-index: 3;
   fill: #fff;
 }
 .hero__spark--1 { top: 10px; left: 110px; width: 30px; height: 30px; }
 .hero__spark--2 { bottom: 40px; right: 40%; width: 18px; height: 18px; }
-
-/* ---------- colinas ---------- */
-.hero__land {
-  position: relative;
-  z-index: 1;
-  margin: clamp(-120px, -8vw, -60px) calc(var(--gutter) * -1) 0;
-  pointer-events: none;
-}
-.hero__land .hills--back {
-  position: relative;
-}
-.hero__front {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-}
-.hero__flowers {
-  z-index: 3;
-  top: 62%;
-  bottom: 0;
-}
-.hero__critter {
-  z-index: 1;
-  width: clamp(64px, 8vw, 110px);
-  animation: peek 1.2s var(--ease-spring) both;
-}
-.hero__critter--1 { left: 6%; bottom: 18%; rotate: -8deg; animation-delay: 1s; }
-.hero__critter--2 { left: 30%; bottom: 34%; width: clamp(44px, 5.5vw, 76px); animation-delay: 1.2s; }
-.hero__critter--3 { left: 62%; bottom: 30%; width: clamp(50px, 6vw, 84px); animation-delay: 1.35s; }
-.hero__critter--4 { right: 7%; bottom: 14%; rotate: 6deg; animation-delay: 1.5s; }
-@keyframes peek {
-  from { translate: 0 70%; }
-  to { translate: 0 0; }
-}
 
 /* ---------- stickers de productos ---------- */
 .hero__stickers {
@@ -417,13 +371,12 @@
     right: 2%;
     bottom: -26px;
   }
-  .hero__spark,
-  .hero__cloud--2,
-  .hero__cloud--4 {
+  .hero__spark {
     display: none;
   }
   .hero__sun {
-    top: 54px;
+    --size: 200px;
+    top: 40px;
     right: -50px;
   }
   .hero__window .win__status span:last-child {

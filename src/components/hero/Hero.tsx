@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import type { Product } from '../../data/products';
 import { Window } from '../ui/Window';
-import { Cloud, Critter, Flowers, Hills, PointerArrow, Sparkle, Sun } from '../decor/Decor';
+import { PointerArrow, Sparkle, Sun } from '../decor/Decor';
 import './hero.css';
 
 interface HeroProps {
@@ -16,14 +16,7 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
 
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
-      {/* cielo */}
-      <div className="hero__sky" aria-hidden="true">
-        <Sun className="hero__sun" />
-        <Cloud className="hero__cloud hero__cloud--1" />
-        <Cloud className="hero__cloud hero__cloud--2" />
-        <Cloud className="hero__cloud hero__cloud--3" />
-        <Cloud className="hero__cloud hero__cloud--4" />
-      </div>
+      <Sun className="hero__sun" />
 
       <div className="hero__stage">
         <ul className="desk-icons" aria-label="Accesos directos">
@@ -110,16 +103,6 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
         </div>
       </div>
 
-      {/* colinas con los bichitos asomándose */}
-      <div className="hero__land" aria-hidden="true">
-        <Hills layer="back" />
-        <Critter kind="bulb" className="hero__critter hero__critter--1" />
-        <Critter kind="star" className="hero__critter hero__critter--2" />
-        <Critter kind="swirl" className="hero__critter hero__critter--3" />
-        <Critter kind="heart" className="hero__critter hero__critter--4" />
-        <Hills layer="front" className="hero__front" />
-        <Flowers count={16} seed={3} className="hero__flowers" />
-      </div>
     </section>
   );
 }
