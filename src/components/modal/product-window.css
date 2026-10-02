@@ -1,0 +1,214 @@
+.pw {
+  width: min(980px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+  color: var(--ink);
+}
+.pw::backdrop {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 1.2px, transparent 1.4px) 0 0 / 18px 18px,
+    rgba(58, 40, 120, 0.42);
+  backdrop-filter: blur(3px);
+}
+.pw[open] {
+  animation: pw-open 0.42s var(--ease-spring) both;
+}
+@keyframes pw-open {
+  from { opacity: 0; scale: 0.85; translate: 0 30px; }
+  to { opacity: 1; scale: 1; translate: 0 0; }
+}
+html.has-modal {
+  overflow: hidden;
+}
+
+.pw__win {
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+}
+.pw__win .win__screen {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pw__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+
+.pw__photo {
+  position: relative;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 3vw, 34px);
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.45) 1.4px, transparent 1.6px) 0 0 / 14px 14px,
+    linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 50%),
+    color-mix(in srgb, var(--c) 32%, #fff);
+}
+.pw__photo img {
+  width: 100%;
+  max-height: min(62vh, 520px);
+  object-fit: contain;
+  border-radius: 18px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: var(--shadow-drop);
+}
+.pw__layout--snapshot .pw__photo img {
+  object-fit: cover;
+  padding: 10px 10px 34px;
+  border-radius: 4px;
+  rotate: -1.5deg;
+}
+.pw__photo figcaption {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(24px, 3.5vw, 42px);
+  translate: -50% 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+.pw__stamp {
+  top: 26px;
+  right: 18px;
+}
+
+.pw__info {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: clamp(20px, 3.5vw, 38px);
+  min-width: 0;
+}
+.pw__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3rem);
+  line-height: 1;
+}
+
+.pw__specs {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1.5px dashed var(--ink-faint);
+}
+.pw__specs > div {
+  display: grid;
+  grid-template-columns: 11.5em minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1.5px dashed var(--ink-faint);
+}
+.pw__specs dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pw__specs dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.pw__strong {
+  font-weight: 700;
+}
+.pw__muted {
+  margin-left: 6px;
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+}
+
+.pw__desc {
+  color: var(--ink-soft);
+}
+.pw__note {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  font-size: var(--t-md);
+}
+.pw__note-label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.pw__actions {
+  display: grid;
+  gap: 14px;
+}
+.pw__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.pw__confirm {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px solid var(--strawberry);
+  background: #fff0f6;
+}
+.pw__msg {
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.pw__msg.lcd {
+  font-size: 1.3rem;
+}
+.pw__msg--ok {
+  background: #e3ffe9;
+  border: 2px solid #2fa95a;
+  color: #145a2c;
+}
+.pw__msg--warn {
+  background: #fff3e0;
+  border: 2px solid var(--tangerine);
+  color: #6a3200;
+}
+.pw__undo {
+  font-size: var(--t-sm);
+  color: var(--ink-soft);
+}
+.pw__undo button {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .pw__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pw__photo img {
+    max-height: 38vh;
+  }
+  .pw__specs > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+  .pw__row .plastic-btn {
+    flex: 1 1 auto;
+  }
+  .pw .win__status span:last-child {
+    display: none;
+  }
+}

@@ -1,0 +1,80 @@
+/**
+ * LA WISHLIST
+ * ------------------------------------------------------------------
+ * Para agregar, quitar o editar un regalo, tocá solo este archivo.
+ * Las fotos van en /public/products/ y se referencian como "products/archivo.jpg".
+ *
+ * Campos:
+ *  id        identificador único y estable (se usa para las reservas, no lo cambies
+ *            una vez publicado o se pierde la reserva de ese regalo).
+ *  name      nombre del regalo.
+ *  image     foto principal.  imageAlt: descripción de la foto (accesibilidad).
+ *  url       link para comprarlo (opcional; sin url no aparece el botón de compra).
+ *  note      nota personal (opcional).
+ *  hearts    1 a 3, qué tanto lo quiero (opcional).
+ *  size      talle / variante a comprar (opcional).
+ *  category, description, price: opcionales; solo se muestran si existen.
+ *  look      cómo se presenta en la web:
+ *            variant  'hardware' | 'blister' | 'snapshot' | 'window'
+ *                     (window es el formato genérico para regalos nuevos)
+ *            color    color de plástico de la card
+ *            sticker  texto corto del sticker (opcional)
+ */
+
+export type PlasticColor = 'tangerine' | 'blueberry' | 'lime' | 'grape' | 'strawberry' | 'bondi' | 'graphite';
+export type CardVariant = 'hardware' | 'blister' | 'snapshot' | 'window';
+
+export interface Product {
+  id: string;
+  name: string;
+  image: string;
+  imageAlt: string;
+  /** true si la foto es provisoria (se muestra una etiqueta "foto provisoria") */
+  imageIsPlaceholder?: boolean;
+  url?: string;
+  note?: string;
+  hearts?: 1 | 2 | 3;
+  size?: string;
+  category?: string;
+  description?: string;
+  price?: string;
+  look?: {
+    variant?: CardVariant;
+    color?: PlasticColor;
+    sticker?: string;
+  };
+}
+
+export const products: Product[] = [
+  {
+    id: 'spa-circuito',
+    name: 'Sesión de circuito de spa',
+    image: 'products/spa-circuito.jpg',
+    imageAlt: 'Luli relajándose al sol entre las plantas, con los ojos entrecerrados',
+    imageIsPlaceholder: true,
+    note: 'Quiero relajarme así como Luli en la foto. La verdad me vendría bárbaro un spa, no sé dónde pero si me sacan esto las amo.',
+    hearts: 3,
+    look: { variant: 'snapshot', color: 'strawberry', sticker: 'modo Luli' },
+  },
+  {
+    id: 'molinillo-cafe',
+    name: 'Molinillo de Café',
+    image: 'products/molinillo-cafe.webp',
+    imageAlt: 'Molinillo de café eléctrico de acero inoxidable con tolva translúcida llena de granos, display digital y tres botones con luz azul',
+    url: 'https://www.mercadolibre.com.ar/molinillo-de-cafe-electrico-cuk-by-gadnic-acero-inoxidable-regulable-fresa-conica-tolva-275g-jarra-100g/p/MLA25021181#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=11&type=product&tracking_id=10039f25-d9a9-4835-8e34-22d219772ecc&wid=MLA1386952901&sid=search',
+    note: 'Perfecto para moler los 60 gramos de café para el cold brewcito de verano.',
+    hearts: 2,
+    look: { variant: 'hardware', color: 'blueberry', sticker: '60 g' },
+  },
+  {
+    id: 'ojotas-hoka',
+    name: 'Ojotas de recuperación',
+    image: 'products/ojotas-hoka.webp',
+    imageAlt: 'Ojota slide negra de suela gruesa y acolchada con el logo de la marca en blanco',
+    url: 'https://www.universoaventura.com.ar/productos/ojotas-sandalias-hoka-athletic-slide-unisex/',
+    note: 'Directo para cuidar mis piecitos después de correr.',
+    hearts: 1,
+    size: 'Talle 43',
+    look: { variant: 'blister', color: 'lime' },
+  },
+];
