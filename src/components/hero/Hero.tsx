@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import type { Product } from '../../data/products';
 import { Window } from '../ui/Window';
-import { CompactDisc, Floppy, PointerArrow, Sparkle } from '../decor/Decor';
+import { Cloud, Critter, Flowers, Hills, PointerArrow, Sparkle, Sun } from '../decor/Decor';
 import './hero.css';
 
 interface HeroProps {
@@ -16,8 +16,16 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
 
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
+      {/* cielo */}
+      <div className="hero__sky" aria-hidden="true">
+        <Sun className="hero__sun" />
+        <Cloud className="hero__cloud hero__cloud--1" />
+        <Cloud className="hero__cloud hero__cloud--2" />
+        <Cloud className="hero__cloud hero__cloud--3" />
+        <Cloud className="hero__cloud hero__cloud--4" />
+      </div>
+
       <div className="hero__stage">
-        {/* íconos de escritorio */}
         <ul className="desk-icons" aria-label="Accesos directos">
           <li>
             <a href="#wishlist" className="desk-icon">
@@ -33,8 +41,6 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
           </li>
         </ul>
 
-        <CompactDisc className="hero__cd" />
-        <Floppy className="hero__floppy" />
         <Sparkle className="hero__spark hero__spark--1" />
         <Sparkle className="hero__spark hero__spark--2" />
 
@@ -45,7 +51,7 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
           status={
             <>
               <span>{total} deseos · {reservedCount} reservados</span>
-              <span>disco: 99% lleno de ganas</span>
+              <span>hoy: soleado ☀</span>
             </>
           }
         >
@@ -87,7 +93,6 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
           </div>
         </Window>
 
-        {/* los regalos reales, como stickers troquelados */}
         <ul className="hero__stickers" aria-label="Algunos regalos de la lista">
           {featured.map((p, i) => (
             <li key={p.id} style={{ '--i': i } as CSSProperties}>
@@ -100,9 +105,20 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
           ))}
         </ul>
         <div className="hero__click" aria-hidden="true">
-          <span className="sticker" data-color="bondi">CLICK!</span>
+          <span className="sticker" data-color="grape">CLICK!</span>
           <PointerArrow className="hero__arrow" />
         </div>
+      </div>
+
+      {/* colinas con los bichitos asomándose */}
+      <div className="hero__land" aria-hidden="true">
+        <Hills layer="back" />
+        <Critter kind="bulb" className="hero__critter hero__critter--1" />
+        <Critter kind="star" className="hero__critter hero__critter--2" />
+        <Critter kind="swirl" className="hero__critter hero__critter--3" />
+        <Critter kind="heart" className="hero__critter hero__critter--4" />
+        <Hills layer="front" className="hero__front" />
+        <Flowers count={16} seed={3} className="hero__flowers" />
       </div>
     </section>
   );

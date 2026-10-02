@@ -173,7 +173,7 @@ function HardwareCard(p: VariantProps) {
   const lit = product.hearts ?? 0;
   return (
     <article className={cardClass('card--hardware', reserved)} data-color={color} style={p.style} aria-label={product.name}>
-      <div className="hw__shell">
+      <div className="hw__shell inflatable">
         <div className="hw__top">
           <span className="hw__brand">{wishFile(product.id)}</span>
           <span className="hw__grill" aria-hidden="true" />
