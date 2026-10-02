@@ -1,0 +1,73 @@
+/*
+ * Wish.OS — design tokens
+ * Layout concept: un escritorio de iBook G3 (2001) visto por un diseñador de 2026:
+ * ventanas con bisel de plástico translúcido flotando sobre un cielo pastel,
+ * con stickers, objetos de época y los regalos como objetos físicos.
+ * Una sola apariencia (clara) a propósito: es un objeto con colores fijos.
+ */
+:root {
+  color-scheme: light;
+
+  /* cielo / fondos */
+  --sky-lilac: #d8cfff;
+  --sky-blue: #c4e7ff;
+  --sky-pink: #ffd9ee;
+  --screen: #fffaf1;       /* "pantalla" crema dentro de las ventanas */
+  --paper: #fff3a8;        /* post-it */
+
+  /* tinta (nunca negro puro) */
+  --ink: #2b2150;
+  --ink-soft: #5b4f86;
+  --ink-faint: rgba(43, 33, 80, 0.14);
+
+  /* plásticos — cada uno con su sombra "inyectada" y tinta para texto encima */
+  --tangerine: #ff8a1f;  --tangerine-dark: #d4600a;  --tangerine-ink: #3a1500;
+  --blueberry: #4b66ff;  --blueberry-dark: #2b3fcf;  --blueberry-ink: #ffffff;
+  --lime: #bfe83a;       --lime-dark: #8cb515;       --lime-ink: #213000;
+  --grape: #9d63ff;      --grape-dark: #6c33d6;      --grape-ink: #ffffff;
+  --strawberry: #ff5a94; --strawberry-dark: #d42c69; --strawberry-ink: #ffffff;
+  --bondi: #16b9cc;      --bondi-dark: #0b8798;      --bondi-ink: #00262b;
+  --graphite: #4a4366;   --graphite-dark: #2b2643;   --graphite-ink: #ffffff;
+
+  /* LCD (eco del display del molinillo) */
+  --lcd-bg: #cdeedd;
+  --lcd-ink: #17322a;
+
+  /* tipografía */
+  --font-display: 'Bagel Fat One', 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'Courier New', monospace;
+  --font-lcd: 'VT323', ui-monospace, 'Courier New', monospace;
+
+  /* escala tipográfica */
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-md: 1rem;
+  --t-lg: 1.25rem;
+  --t-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem);
+  --t-2xl: clamp(2.4rem, 1.6rem + 3.6vw, 4.4rem);
+  --t-hero: clamp(5.4rem, 1rem + 15vw, 11.5rem);
+
+  /* forma */
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --bezel: 9px;
+
+  /* sombras físicas */
+  --shadow-drop: 0 18px 30px -12px rgba(43, 33, 80, 0.35), 0 4px 8px rgba(43, 33, 80, 0.12);
+  --shadow-lift: 0 30px 40px -14px rgba(43, 33, 80, 0.42), 0 8px 14px rgba(43, 33, 80, 0.14);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --gutter: clamp(16px, 4vw, 48px);
+  --menubar-h: 44px;
+}
+
+/* cada componente elige su plástico con data-color */
+[data-color='tangerine']  { --c: var(--tangerine);  --c-dark: var(--tangerine-dark);  --c-ink: var(--tangerine-ink); }
+[data-color='blueberry']  { --c: var(--blueberry);  --c-dark: var(--blueberry-dark);  --c-ink: var(--blueberry-ink); }
+[data-color='lime']       { --c: var(--lime);       --c-dark: var(--lime-dark);       --c-ink: var(--lime-ink); }
+[data-color='grape']      { --c: var(--grape);      --c-dark: var(--grape-dark);      --c-ink: var(--grape-ink); }
+[data-color='strawberry'] { --c: var(--strawberry); --c-dark: var(--strawberry-dark); --c-ink: var(--strawberry-ink); }
+[data-color='bondi']      { --c: var(--bondi);      --c-dark: var(--bondi-dark);      --c-ink: var(--bondi-ink); }
+[data-color='graphite']   { --c: var(--graphite);   --c-dark: var(--graphite-dark);   --c-ink: var(--graphite-ink); }
