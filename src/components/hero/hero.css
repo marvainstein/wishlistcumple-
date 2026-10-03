@@ -159,18 +159,11 @@
   --size: clamp(240px, 26vw, 400px);
   top: clamp(10px, 2vw, 40px);
   right: clamp(-40px, 5vw, 120px);
-  z-index: 1;
-  /* espera escondido abajo; sube cuando la persona entra */
-  translate: 0 160%;
-  opacity: 0;
-}
-.hero__sun.is-up {
-  animation: sun-rise 2.6s cubic-bezier(0.2, 0.85, 0.3, 1.12) 0.6s both;
-}
-@keyframes sun-rise {
-  0% { translate: 0 160%; opacity: 0; scale: 0.7; }
-  25% { opacity: 1; }
-  100% { translate: 0 0; opacity: 1; scale: 1; }
+  /* hueco donde arranca el sol que te acompaña (ver SunCompanion) */
+  position: absolute;
+  width: var(--size);
+  aspect-ratio: 1;
+  pointer-events: none;
 }
 .hero__spark {
   z-index: 3;

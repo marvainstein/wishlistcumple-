@@ -10,6 +10,7 @@ import { FinalCta } from './components/sections/FinalCta';
 import { ProductWindow } from './components/modal/ProductWindow';
 import { ClickSparkles } from './components/decor/ClickSparkles';
 import { Scene } from './components/decor/Decor';
+import { SunCompanion } from './components/decor/SunCompanion';
 import { IntroGate } from './components/intro/IntroGate';
 import { useMusic } from './lib/useMusic';
 
@@ -38,12 +39,13 @@ export default function App() {
   return (
     <>
       <Scene />
+      <SunCompanion up={gate !== 'shown'} />
       <a className="skip-link" href="#wishlist">
         Saltar a la wishlist
       </a>
       <MenuBar mode={reservations.mode} music={music} />
       <main>
-        <Hero sunUp={gate !== 'shown'} featured={featured} total={products.length} reservedCount={reservedCount} onOpen={handleOpen} />
+        <Hero featured={featured} total={products.length} reservedCount={reservedCount} onOpen={handleOpen} />
         <div className="meadow">
           <Ticker total={products.length} reserved={reservedCount} />
           <HowItWorks />

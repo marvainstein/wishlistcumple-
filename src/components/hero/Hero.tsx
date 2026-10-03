@@ -1,24 +1,22 @@
 import type { CSSProperties } from 'react';
 import type { Product } from '../../data/products';
 import { Window } from '../ui/Window';
-import { PointerArrow, Sparkle, Sun } from '../decor/Decor';
+import { PointerArrow, Sparkle } from '../decor/Decor';
 import './hero.css';
 
 interface HeroProps {
-  /** el sol sube cuando la persona entra */
-  sunUp: boolean;
   featured: Product[];
   total: number;
   reservedCount: number;
   onOpen: (id: string) => void;
 }
 
-export function Hero({ sunUp, featured, total, reservedCount, onOpen }: HeroProps) {
+export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
   const progress = total ? Math.round((reservedCount / total) * 100) : 0;
 
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
-      <Sun className={`hero__sun${sunUp ? ' is-up' : ''}`} />
+      <div className="hero__sun" data-sun-slot="start" aria-hidden="true" />
 
       <div className="hero__stage">
 

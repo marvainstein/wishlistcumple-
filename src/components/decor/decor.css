@@ -88,3 +88,32 @@
   fill: #fff;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
 }
+
+/* =================================================================== */
+/* SOL QUE TE ACOMPAÑA                                                  */
+/* =================================================================== */
+.sun-companion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40; /* por delante del contenido (no bloquea clics), debajo de la navegación */
+  aspect-ratio: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+.sun-companion .sun-companion__sun {
+  --size: 100%;
+  inset: 0;
+  width: 100%;
+  /* espera escondido abajo; sube cuando la persona entra */
+  translate: 0 160%;
+  opacity: 0;
+}
+.sun-companion.is-up .sun-companion__sun {
+  animation: sun-rise 2.6s cubic-bezier(0.2, 0.85, 0.3, 1.12) 0.5s both;
+}
+@keyframes sun-rise {
+  0% { translate: 0 160%; opacity: 0; scale: 0.7; }
+  25% { opacity: 1; }
+  100% { translate: 0 0; opacity: 1; scale: 1; }
+}

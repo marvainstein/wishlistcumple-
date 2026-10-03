@@ -179,10 +179,9 @@
   max-width: 1080px;
   margin: 0 auto;
 }
-.final .final__sun {
-  position: relative;
-  --size: 100%;
+.final__sun-slot {
   width: 100%;
+  aspect-ratio: 1;
 }
 .final__copy {
   display: grid;
@@ -225,8 +224,8 @@
   .final__inner {
     grid-template-columns: minmax(0, 1fr);
   }
-  .final .final__sun {
-    width: 160px;
+  .final__sun-slot {
+    width: 200px;
     justify-self: center;
   }
 }
