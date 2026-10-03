@@ -13,6 +13,8 @@
  *  note      nota personal (opcional).
  *  hearts    1 a 3, qué tanto lo quiero (opcional).
  *  size      talle / variante a comprar (opcional).
+ *  reservedBy si alguien ya lo tiene asignado (ej: 'reservado por mis suegros'):
+ *            se muestra como reservado para todos, con ese texto, y no se puede reservar.
  *  category, description, price: opcionales; solo se muestran si existen.
  *  look      cómo se presenta en la web:
  *            variant  'hardware' | 'blister' | 'snapshot' | 'window'
@@ -35,6 +37,8 @@ export interface Product {
   note?: string;
   hearts?: 1 | 2 | 3;
   size?: string;
+  /** ya asignado de antemano; el texto se muestra en el cartel */
+  reservedBy?: string;
   category?: string;
   description?: string;
   price?: string;
@@ -67,14 +71,13 @@ export const products: Product[] = [
     look: { variant: 'hardware', color: 'blueberry', sticker: '60 g' },
   },
   {
-    id: 'ojotas-hoka',
-    name: 'Ojotas de recuperación',
-    image: 'products/ojotas-hoka.webp',
-    imageAlt: 'Ojota slide negra de suela gruesa y acolchada con el logo de la marca en blanco',
-    url: 'https://www.universoaventura.com.ar/productos/ojotas-sandalias-hoka-athletic-slide-unisex/',
-    note: 'Directo para cuidar mis piecitos después de correr.',
-    hearts: 1,
-    size: 'Talle 43',
-    look: { variant: 'blister', color: 'lime' },
+    id: 'cafe-guatemala-geisha',
+    name: 'Café Guatemala Geisha Lavado 250gr',
+    image: 'products/cafe-guatemala-geisha.webp',
+    imageAlt: 'Bolsa blanca de café Puerto Blest "Guatemala, Santa Rita, Geisha lavado" apoyada sobre un estante de piedra',
+    url: 'https://www.cafepuertoblest.com/productos/guatemala-geisha-lavado/?recommendation_source=complementary-carousel&recommender=manual',
+    hearts: 3,
+    reservedBy: 'reservado por mis suegros',
+    look: { variant: 'window', color: 'lime' },
   },
 ];

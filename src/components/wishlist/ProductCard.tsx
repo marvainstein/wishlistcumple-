@@ -83,7 +83,7 @@ function Actions({ product, reserved, mine, onOpen }: CardProps) {
     return (
       <div className="card__actions">
         <button type="button" className="reserved-chip" onClick={() => onOpen(product.id)}>
-          <span aria-hidden="true">✓</span> {mine ? 'lo reservaste vos' : 'ya está reservado'}
+          <span aria-hidden="true">✓</span> {product.reservedBy ?? (mine ? 'lo reservaste vos' : 'ya está reservado')}
         </button>
       </div>
     );
