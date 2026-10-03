@@ -19,4 +19,4 @@ export const SUN_IMAGE = 'scene/sol.jpg';
  * Cara que se superpone en el centro del sol (archivo en /public, por ejemplo
  * "scene/luli-sol.jpg"). Si queda vacío, se ve el sol de la foto tal cual.
  */
-export const SUN_FACE: string | undefined = undefined;
+export const SUN_FACE: string | undefined = 'scene/luli-sol.jpg';
