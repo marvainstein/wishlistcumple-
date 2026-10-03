@@ -11,11 +11,11 @@ export function Ticker({ total, reserved }: TickerProps) {
     `${total} deseos cargados`,
     `${free} sin reservar`,
     'las reservas son anónimas',
-    'hecho a mano en Wish.OS',
+    'hecho con amor',
   ];
   const line = items.map((t) => `★ ${t} `).join('');
   return (
-    <div className="ticker inflatable" role="marquee" aria-label={items.join('. ')}>
+    <div className="ticker" role="marquee" aria-label={items.join('. ')}>
       <div className="ticker__screen lcd" aria-hidden="true">
         <div className="ticker__track">
           <span>{line}</span>

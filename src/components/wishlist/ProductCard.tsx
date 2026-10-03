@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { CardVariant, PlasticColor, Product } from '../../data/products';
 import { Hearts } from '../ui/Hearts';
 import { Window } from '../ui/Window';
-import { storeName, wishFile } from '../../lib/format';
+import { storeName } from '../../lib/format';
 import './cards.css';
 
 export interface CardProps {
@@ -133,7 +133,7 @@ function SnapshotCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
     <article className={cardClass('card--snapshot', reserved)} style={p.style} aria-label={product.name}>
-      <Window title={`${product.id.replace(/-/g, '_')}.jpg — Visor de fotos`} color={color} screenClassName="snap__screen">
+      <Window title={product.hearts === 3 ? 'top de la lista' : 'lo quiero'} color={color} screenClassName="snap__screen">
         <div className="snap__layout">
           <div className="snap__print">
             <span className="tape tape--a" aria-hidden="true" />
@@ -173,14 +173,13 @@ function HardwareCard(p: VariantProps) {
   const lit = product.hearts ?? 0;
   return (
     <article className={cardClass('card--hardware', reserved)} data-color={color} style={p.style} aria-label={product.name}>
-      <div className="hw__shell inflatable">
+      <div className="hw__shell">
         <div className="hw__top">
-          <span className="hw__brand">{wishFile(product.id)}</span>
+          <span className="hw__brand">★ ★ ★</span>
           <span className="hw__grill" aria-hidden="true" />
         </div>
         <div className="hw__lcd lcd" aria-hidden="true">
           <span>{product.look?.sticker ?? 'READY'}</span>
-          <span className="hw__lcd-blink">▮</span>
         </div>
         <PhotoButton product={product} onOpen={p.onOpen} className="hw__window" />
         <div className="hw__panel">
@@ -253,7 +252,7 @@ function WindowCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
     <article className={cardClass('card--window', reserved)} style={p.style} aria-label={product.name}>
-      <Window title={wishFile(product.id)} color={color}>
+      <Window title="lo quiero" color={color}>
         <PhotoButton product={product} onOpen={p.onOpen} className="wc__photo" />
         <div className="wc__body">
           <div className="wc__row">

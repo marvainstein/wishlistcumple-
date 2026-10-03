@@ -51,7 +51,7 @@ export function Wishlist({ products, reservations, onOpen }: WishlistProps) {
       <div className="wishlist__head">
         <div className="wishlist__titles">
           <p className="wishlist__kicker">
-            <span className="lcd">C:\deseos\</span>
+            <span className="lcd">★ los regalos ★</span>
           </p>
           <h2 id="wishlist-title" className="wishlist__title">
             la wishlist

@@ -212,3 +212,52 @@ html.has-modal {
     display: none;
   }
 }
+
+/* trazo de dibujo animado */
+.pw::backdrop {
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 95, 168, 0.55) 0 10deg, rgba(162, 59, 157, 0.55) 10deg 20deg);
+  backdrop-filter: blur(2px);
+}
+.pw__photo {
+  border-right: var(--line) solid var(--outline);
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 2px, transparent 2.5px) 0 0 / 16px 16px,
+    var(--c);
+}
+.pw__photo img {
+  border: var(--line) solid var(--outline);
+  box-shadow: 5px 5px 0 var(--outline);
+}
+.pw__name {
+  color: #fff;
+  -webkit-text-stroke: 0.07em var(--outline);
+  paint-order: stroke fill;
+  text-shadow: 0.05em 0.06em 0 var(--outline);
+}
+.pw__specs,
+.pw__specs > div {
+  border-color: var(--outline);
+  border-width: 2px;
+}
+.pw__specs dt {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.pw__confirm {
+  border: var(--line) solid var(--outline);
+  background: #ffe3f0;
+  box-shadow: 4px 4px 0 var(--outline);
+}
+.pw__msg {
+  border: var(--line) solid var(--outline) !important;
+  box-shadow: 3px 3px 0 var(--outline);
+}
+@media (max-width: 720px) {
+  .pw__photo {
+    border-right: 0;
+    border-bottom: var(--line) solid var(--outline);
+  }
+}

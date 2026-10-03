@@ -1,9 +1,8 @@
 /*
- * Wish.OS — design tokens
- * Layout concept: un día de sol en colinas verdes de programa infantil del 2000.
- * Las ventanas son de plástico inflable transparente (como un sillón inflable),
- * los regalos flotan sobre el pasto y un sol enorme sale detrás de la colina.
- * Una sola apariencia (clara) a propósito: es un mundo con colores fijos.
+ * Design tokens
+ * Layout concept: dibujo animado de principios de los 2000 pegado sobre la foto
+ * de las colinas: paneles planos con contorno grueso, sombras duras, estrellas,
+ * corazones y estelas de color (rosa, celeste, verde). Una sola apariencia, a propósito.
  */
 :root {
   color-scheme: light;
@@ -21,7 +20,7 @@
   --sun: #ffd23a;
   --sun-hot: #ffb21f;
 
-  --screen: rgba(255, 255, 255, 0.74); /* interior lechoso de las ventanas */
+  --screen: #fff6ea;                  /* interior crema de los paneles */
   --screen-solid: #f7fbff;
   --paper: #fff3a8;                    /* post-it */
 
@@ -30,18 +29,24 @@
   --scene-shadow: 0 2px 0 rgba(23, 74, 18, 0.55), 0 6px 20px rgba(23, 74, 18, 0.45);
 
   /* tinta (azul noche, nunca negro puro) */
-  --ink: #1c2a56;
-  --ink-soft: #46557f;
-  --ink-faint: rgba(28, 42, 86, 0.14);
+  --ink: #1d0b22;
+  --ink-soft: #5a3a5e;
+  --ink-faint: rgba(29, 11, 34, 0.18);
 
-  /* plásticos: colores de juguete de los 2000 (los nombres se usan en products.ts) */
-  --tangerine: #ffcf2e;  --tangerine-dark: #d99a00;  --tangerine-ink: #3a2600;  /* amarillo sol */
-  --strawberry: #ef3b36; --strawberry-dark: #b51e1a; --strawberry-ink: #ffffff;  /* rojo */
-  --grape: #8b55d6;      --grape-dark: #5f2fa8;      --grape-ink: #ffffff;      /* violeta */
-  --lime: #93d93b;       --lime-dark: #5d9e1a;       --lime-ink: #1b3300;       /* verde */
-  --blueberry: #3b8fe8;  --blueberry-dark: #1f63b8;  --blueberry-ink: #ffffff;  /* celeste cielo */
-  --bondi: #2ec4d6;      --bondi-dark: #128f9e;      --bondi-ink: #00262b;
-  --graphite: #4a4366;   --graphite-dark: #2b2643;   --graphite-ink: #ffffff;
+  /* colores de dibujo animado (los nombres se usan en products.ts) */
+  --strawberry: #ff5fa8; --strawberry-dark: #d6307e; --strawberry-ink: #2a0a1c;  /* rosa */
+  --blueberry: #4fc3f7;  --blueberry-dark: #1f93c9;  --blueberry-ink: #08243a;  /* celeste */
+  --lime: #7ed957;       --lime-dark: #4fa82e;       --lime-ink: #10300a;       /* verde */
+  --tangerine: #ffd23f;  --tangerine-dark: #e0a800;  --tangerine-ink: #2e2000;  /* amarillo */
+  --grape: #a23b9d;      --grape-dark: #6e1f6a;      --grape-ink: #ffffff;      /* magenta 70s */
+  --bondi: #ff8a3d;      --bondi-dark: #d65f12;      --bondi-ink: #2e1200;      /* naranja */
+  --graphite: #1d0b22;   --graphite-dark: #000000;   --graphite-ink: #ffffff;
+
+  /* el trazo de dibujo animado */
+  --outline: #1d0b22;
+  --line: 3.5px;
+  --hard: 6px;
+  --cream: #fff6ea;
 
   /* LCD */
   --lcd-bg: #cdeedd;
@@ -50,7 +55,7 @@
   /* tipografía */
   --font-display: 'Bagel Fat One', 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
   --font-body: 'DM Sans', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'Courier New', monospace;
+  --font-mono: 'DM Sans', 'Helvetica Neue', Arial, system-ui, sans-serif; /* textos chicos (antes monoespaciada) */
   --font-lcd: 'VT323', ui-monospace, 'Courier New', monospace;
 
   /* escala tipográfica */
@@ -65,7 +70,7 @@
   /* forma */
   --r-sm: 10px;
   --r-md: 18px;
-  --r-lg: 34px;
+  --r-lg: 30px;
   --bezel: 12px;
 
   /* sombras */

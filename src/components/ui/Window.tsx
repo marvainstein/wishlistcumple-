@@ -5,7 +5,7 @@ interface WindowProps {
   title: string;
   color?: PlasticColor;
   status?: ReactNode;
-  /** botón real de cerrar (solo en ventanas que se pueden cerrar) */
+  /** botón real de cerrar (solo en paneles que se pueden cerrar) */
   onClose?: () => void;
   closeLabel?: string;
   className?: string;
@@ -16,13 +16,13 @@ interface WindowProps {
   labelledBy?: string;
 }
 
-/** Ventana de "sistema operativo 2001" con bisel de plástico translúcido. */
+/** Panel de dibujo animado: contorno grueso, solapa de color con estrellitas y sombra dura. */
 export function Window({
   title,
   color = 'grape',
   status,
   onClose,
-  closeLabel = 'Cerrar ventana',
+  closeLabel = 'Cerrar',
   className = '',
   screenClassName = '',
   style,
@@ -31,27 +31,19 @@ export function Window({
   labelledBy,
 }: WindowProps) {
   return (
-    <Tag className={`win inflatable ${className}`} data-color={color} style={style} aria-labelledby={labelledBy}>
+    <Tag className={`win toon ${className}`} data-color={color} style={style} aria-labelledby={labelledBy}>
       <div className="win__bar">
-        {onClose ? (
-          <div className="win__lights">
-            <button type="button" className="win__close" onClick={onClose} aria-label={closeLabel}>
-              <span aria-hidden="true">×</span>
-            </button>
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-          </div>
-        ) : (
-          <div className="win__lights" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-        )}
+        <span className="win__stars" aria-hidden="true">★ ★ ★</span>
         <div className="win__title" aria-hidden="true">
           {title}
         </div>
-        <div className="win__lights win__lights--ghost" aria-hidden="true" />
+        {onClose ? (
+          <button type="button" className="win__close" onClick={onClose} aria-label={closeLabel}>
+            <span aria-hidden="true">×</span>
+          </button>
+        ) : (
+          <span className="win__heart" aria-hidden="true">♥</span>
+        )}
       </div>
       <div className={`win__screen ${screenClassName}`}>{children}</div>
       {status && <div className="win__status">{status}</div>}
