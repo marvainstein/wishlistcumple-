@@ -8,7 +8,3 @@ export function storeName(url?: string): string | undefined {
   }
 }
 
-/** nombre de archivo "de época" para la barra de título: "molinillo-cafe.wish" */
-export function wishFile(id: string): string {
-  return `${id}.wish`;
-}

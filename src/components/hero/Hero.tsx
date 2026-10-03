@@ -19,26 +19,12 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
       <Sun className="hero__sun" />
 
       <div className="hero__stage">
-        <ul className="desk-icons" aria-label="Accesos directos">
-          <li>
-            <a href="#wishlist" className="desk-icon">
-              <span className="desk-icon__img desk-icon__img--folder" aria-hidden="true" />
-              <span className="desk-icon__label">wishlist</span>
-            </a>
-          </li>
-          <li>
-            <a href="#como" className="desk-icon">
-              <span className="desk-icon__img desk-icon__img--doc" aria-hidden="true" />
-              <span className="desk-icon__label">cómo.txt</span>
-            </a>
-          </li>
-        </ul>
 
         <Sparkle className="hero__spark hero__spark--1" />
         <Sparkle className="hero__spark hero__spark--2" />
 
         <Window
-          title="cumple.wish — 2001 edition"
+          title="¡llegó el cumple!"
           color="tangerine"
           className="hero__window"
           status={
@@ -88,7 +74,7 @@ export function Hero({ featured, total, reservedCount, onOpen }: HeroProps) {
 
         <ul className="hero__stickers" aria-label="Algunos regalos de la lista">
           {featured.map((p, i) => (
-            <li key={p.id} style={{ '--i': i } as CSSProperties}>
+            <li key={p.id} data-color={p.look?.color ?? 'strawberry'} style={{ '--i': i } as CSSProperties}>
               <button type="button" className="photo-sticker" onClick={() => onOpen(p.id)}>
                 <img src={p.image} alt="" loading="eager" />
                 <span className="photo-sticker__cap">{p.name}</span>

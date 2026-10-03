@@ -1,59 +1,41 @@
 .menubar {
   position: fixed;
-  top: 0;
+  top: calc(10px + env(safe-area-inset-top, 0px));
   left: 0;
   right: 0;
   z-index: 100;
-  padding-top: env(safe-area-inset-top, 0px);
-  background:
-    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0 1px, rgba(255, 255, 255, 0.2) 1px 3px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(236, 232, 255, 0.85));
-  border-bottom: 1.5px solid rgba(43, 33, 80, 0.18);
-  box-shadow: 0 4px 18px -8px rgba(43, 33, 80, 0.35);
-  backdrop-filter: blur(8px) saturate(1.3);
+  display: flex;
+  justify-content: center;
+  padding-inline: 12px;
+  pointer-events: none;
 }
 
 .menubar__inner {
   display: flex;
   align-items: center;
-  gap: clamp(8px, 2vw, 24px);
-  height: var(--menubar-h);
-  padding-inline: var(--gutter);
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 10px;
+  max-width: 100%;
+  padding: 6px 8px 6px 16px;
+  border: var(--line) solid var(--outline);
+  border-radius: 999px;
+  background: var(--cream);
+  box-shadow: var(--hard) var(--hard) 0 var(--outline);
+  pointer-events: auto;
 }
 
 .menubar__logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  flex: none;
   font-family: var(--font-display);
   font-size: 1.15rem;
+  color: var(--strawberry);
   text-decoration: none;
-  color: var(--ink);
-  flex: none;
-}
-.menubar__apple {
-  display: inline-grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  font-size: 1rem;
-  color: #fff;
-  background:
-    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.8) 0 15%, transparent 40%),
-    conic-gradient(var(--tangerine), var(--strawberry), var(--grape), var(--blueberry), var(--bondi), var(--lime), var(--tangerine));
-  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.2);
-  transition: transform 0.6s var(--ease-spring);
-}
-.menubar__logo:hover .menubar__apple {
-  transform: rotate(180deg);
+  -webkit-text-stroke: 1.5px var(--outline);
+  paint-order: stroke fill;
 }
 
 .menubar__links {
   display: flex;
-  gap: 2px;
+  gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -63,81 +45,69 @@
 }
 .menubar__links a {
   display: inline-block;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-family: var(--font-mono);
-  font-size: var(--t-sm);
+  padding: 5px 12px;
+  border: 2.5px solid var(--outline);
+  border-radius: 999px;
+  background: var(--c);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
   text-decoration: none;
   white-space: nowrap;
-  color: var(--ink);
+  box-shadow: 0 3px 0 var(--outline);
+  transition: transform 0.12s, box-shadow 0.12s;
 }
 .menubar__links a:hover {
-  background: var(--blueberry);
-  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 var(--outline);
+}
+.menubar__links a:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--outline);
 }
 
-.menubar__tray {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-left: auto;
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: var(--t-xs);
-}
 .menubar__led {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px 3px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 1px 3px rgba(43, 33, 80, 0.2);
+  flex: none;
+  padding: 4px 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--t-xs);
+  color: var(--outline);
 }
 .menubar__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #b9b3cc;
+  font-size: 0.95rem;
+  color: #b9b0c2;
 }
 .menubar__led--online .menubar__dot {
-  background: #3fd46a;
-  box-shadow: 0 0 0 2px rgba(63, 212, 106, 0.25), 0 0 8px #3fd46a;
+  color: var(--strawberry);
+  animation: beat 1.6s ease-in-out infinite;
 }
 .menubar__led--local .menubar__dot {
-  background: var(--tangerine);
-  box-shadow: 0 0 6px var(--tangerine);
+  color: var(--tangerine);
 }
-.menubar__led--connecting .menubar__dot {
-  animation: blink 1s steps(2) infinite;
-}
-@keyframes blink {
-  50% { opacity: 0.2; }
-}
-.menubar__clock {
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+@keyframes beat {
+  0%, 100% { scale: 1; }
+  15% { scale: 1.3; }
+  30% { scale: 1; }
 }
 
 @media (max-width: 720px) {
-  .menubar__clock {
+  .menubar__mode {
     display: none;
-  }
-  .menubar__links a {
-    padding: 6px 8px;
   }
 }
-@media (max-width: 520px) {
-  .menubar__logo > span:last-child,
-  .menubar__mode,
-  .menubar__links a > span {
+@media (max-width: 480px) {
+  .menubar__logo {
     display: none;
   }
-  .menubar__links a {
-    padding: 6px 7px;
-    font-size: var(--t-xs);
+  .menubar__inner {
+    padding-left: 8px;
   }
-  .menubar__led {
-    padding: 6px;
+  .menubar__links a {
+    padding: 5px 10px;
+    font-size: 0.82rem;
   }
 }

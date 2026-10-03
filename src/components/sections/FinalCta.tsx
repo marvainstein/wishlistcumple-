@@ -23,11 +23,7 @@ export function FinalCta() {
         </div>
       </div>
       <footer className="footer">
-        <span>Wish.OS</span>
-        <span aria-hidden="true">·</span>
-        <span>edición 2001, hecha en 2026</span>
-        <span aria-hidden="true">·</span>
-        <span>con ♥</span>
+        <span>hecho con ♥ para mi cumple</span>
       </footer>
     </section>
   );

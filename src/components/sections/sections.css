@@ -248,3 +248,76 @@
     opacity: 0;
   }
 }
+
+/* =================================================================== */
+/* Trazo de dibujo animado                                              */
+/* =================================================================== */
+.ticker {
+  padding: 8px var(--gutter);
+  border-block: var(--line) solid var(--outline);
+  background: var(--strawberry);
+  box-shadow: 0 var(--hard) 0 var(--outline);
+}
+.ticker__screen {
+  padding: 4px 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #fff;
+  -webkit-text-stroke: 1.5px var(--outline);
+  paint-order: stroke fill;
+}
+.how__side {
+  border-right: var(--line) solid var(--outline);
+  background:
+    repeating-conic-gradient(from 0deg at 50% 32%, var(--blueberry) 0 12deg, #8fdcff 12deg 24deg);
+}
+.how__badge {
+  border: var(--line) solid var(--outline);
+  background: var(--tangerine);
+  color: var(--outline);
+  box-shadow: 4px 4px 0 var(--outline);
+}
+.how__title {
+  color: var(--blueberry);
+  -webkit-text-stroke: 0.06em var(--outline);
+  paint-order: stroke fill;
+  text-shadow: 0.05em 0.06em 0 var(--outline);
+}
+.how__step h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+}
+.how__num {
+  border: var(--line) solid var(--outline);
+  box-shadow: 0 3px 0 var(--outline);
+  color: var(--outline);
+}
+.how__step:nth-child(1) .how__num { background: var(--strawberry); }
+.how__step:nth-child(2) .how__num { background: var(--blueberry); }
+.how__step:nth-child(3) .how__num { background: var(--lime); }
+.how__foot {
+  justify-content: flex-end;
+  border-top: var(--line) dashed var(--outline);
+}
+.final__title,
+.wishlist__title {
+  color: #fff;
+  -webkit-text-stroke: 0.07em var(--outline);
+  paint-order: stroke fill;
+  text-shadow: 0.06em 0.07em 0 var(--outline);
+}
+.footer {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  -webkit-text-stroke: 1.2px var(--outline);
+  paint-order: stroke fill;
+  text-shadow: none;
+}

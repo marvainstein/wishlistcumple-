@@ -3,7 +3,7 @@ import type { Product } from '../../data/products';
 import type { Reservations } from '../../lib/useReservations';
 import { Hearts, heartsLabel } from '../ui/Hearts';
 import { Window } from '../ui/Window';
-import { storeName, wishFile } from '../../lib/format';
+import { storeName } from '../../lib/format';
 import './product-window.css';
 
 interface ProductWindowProps {
@@ -81,7 +81,7 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
       }}
     >
       <Window
-        title={`${wishFile(product.id)} — Visor de deseos`}
+        title="¡lo quiero!"
         color={color}
         onClose={() => dialogRef.current?.close()}
         closeLabel="Cerrar detalle"

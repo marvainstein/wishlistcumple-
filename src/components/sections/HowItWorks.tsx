@@ -6,17 +6,16 @@ const STEPS = [
   { title: 'Compralo', text: 'Seguí el link a la tienda (o donde prefieras). Si te arrepentís, podés deshacer la reserva desde el mismo navegador.' },
 ];
 
-/** "Asistente de regalos": instalador de época con los 3 pasos reales del flujo. */
+/** Los 3 pasos reales del flujo de reserva. */
 export function HowItWorks() {
   return (
     <section id="como" className="how" aria-labelledby="how-title">
-      <Window title="Asistente de regalos — paso a paso" color="blueberry" className="how__win">
+      <Window title="paso a paso" color="blueberry" className="how__win">
         <div className="how__screen">
           <div className="how__side" aria-hidden="true">
             <div className="how__badge">
               <span>?</span>
             </div>
-            <p>v1.0</p>
           </div>
           <div className="how__main">
             <h2 id="how-title" className="how__title">¿Cómo funciona?</h2>
@@ -32,9 +31,6 @@ export function HowItWorks() {
               ))}
             </ol>
             <div className="how__foot">
-              <span className="how__bar" aria-hidden="true">
-                <span />
-              </span>
               <a href="#wishlist" className="plastic-btn plastic-btn--sm" data-color="blueberry">
                 siguiente: elegir regalo <span aria-hidden="true">→</span>
               </a>
