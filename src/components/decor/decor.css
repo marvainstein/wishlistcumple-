@@ -54,21 +54,21 @@
   overflow: hidden;
   /* la foto toma el color del sol (luminosidad sobre dorado), como la cara del sol original */
   background: radial-gradient(circle at 50% 45%, #ffe27a, #ffbf2a 70%);
-  -webkit-mask: radial-gradient(closest-side, #000 62%, transparent 100%);
-  mask: radial-gradient(closest-side, #000 62%, transparent 100%);
+  -webkit-mask: radial-gradient(closest-side, #000 74%, transparent 100%);
+  mask: radial-gradient(closest-side, #000 74%, transparent 100%);
 }
 .sun__face img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   mix-blend-mode: luminosity;
-  filter: brightness(1.45) contrast(1.15);
+  filter: brightness(1.05) contrast(1.3);
 }
 .sun__face::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255, 214, 80, 0) 40%, rgba(255, 205, 50, 0.85) 100%);
+  background: radial-gradient(circle, rgba(255, 214, 80, 0) 55%, rgba(255, 205, 50, 0.8) 100%);
 }
 @keyframes sun-breathe {
   0%, 100% { scale: 1; }
