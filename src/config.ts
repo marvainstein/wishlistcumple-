@@ -20,3 +20,9 @@ export const SUN_IMAGE = 'scene/sol.jpg';
  * "scene/luli-sol.jpg"). Si queda vacío, se ve el sol de la foto tal cual.
  */
 export const SUN_FACE: string | undefined = 'scene/luli-sol.jpg';
+
+/**
+ * Canción que suena al entrar (archivo en /public). Si el archivo no existe,
+ * la web funciona igual y el botón de música no aparece.
+ */
+export const MUSIC_SRC = 'audio/cancion.mp3';

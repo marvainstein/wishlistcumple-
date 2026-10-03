@@ -10,10 +10,20 @@ import { FinalCta } from './components/sections/FinalCta';
 import { ProductWindow } from './components/modal/ProductWindow';
 import { ClickSparkles } from './components/decor/ClickSparkles';
 import { Scene } from './components/decor/Decor';
+import { IntroGate } from './components/intro/IntroGate';
+import { useMusic } from './lib/useMusic';
 
 export default function App() {
   const reservations = useReservations();
   const [open, setOpen] = useState<{ id: string; intent?: 'reserve' } | null>(null);
+  const music = useMusic();
+  // pantalla de entrada -> el sol sube -> se va la pantalla
+  const [gate, setGate] = useState<'shown' | 'leaving' | 'gone'>('shown');
+  const enter = (withSound: boolean) => {
+    if (withSound) music.play();
+    setGate('leaving');
+    window.setTimeout(() => setGate('gone'), 2100);
+  };
 
   // en el hero aparecen los más queridos primero (hasta 3)
   const featured = useMemo(
@@ -31,9 +41,9 @@ export default function App() {
       <a className="skip-link" href="#wishlist">
         Saltar a la wishlist
       </a>
-      <MenuBar mode={reservations.mode} />
+      <MenuBar mode={reservations.mode} music={music} />
       <main>
-        <Hero featured={featured} total={products.length} reservedCount={reservedCount} onOpen={handleOpen} />
+        <Hero sunUp={gate !== 'shown'} featured={featured} total={products.length} reservedCount={reservedCount} onOpen={handleOpen} />
         <div className="meadow">
           <Ticker total={products.length} reserved={reservedCount} />
           <HowItWorks />
@@ -48,6 +58,7 @@ export default function App() {
         onClose={() => setOpen(null)}
       />
       <ClickSparkles />
+      {gate !== 'gone' && <IntroGate hasMusic={music.available} onEnter={enter} />}
     </>
   );
 }
