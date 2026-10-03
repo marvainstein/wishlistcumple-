@@ -196,11 +196,11 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
                       ♡ lo regalo yo
                     </button>
                   )}
-                  {reserved && !mine && <span className="reserved-chip">✓ ya está reservado</span>}
+                  {reserved && !mine && <span className="reserved-chip">✓ {product.reservedBy ?? 'ya está reservado'}</span>}
                 </div>
               )}
 
-              {reserved && mine && step !== 'working' && (
+              {reserved && mine && !product.reservedBy && step !== 'working' && (
                 <p className="pw__undo">
                   Lo reservaste vos.{' '}
                   <button type="button" onClick={doUndo}>

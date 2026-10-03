@@ -543,10 +543,12 @@
 .wc__photo {
   background: #fff;
 }
+.wc__photo {
+  overflow: hidden;
+}
 .wc__photo img {
-  aspect-ratio: 1;
-  object-fit: contain;
-  padding: 14px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 .wc__body {
   display: grid;

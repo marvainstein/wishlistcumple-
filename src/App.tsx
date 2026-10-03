@@ -15,7 +15,12 @@ import { IntroGate } from './components/intro/IntroGate';
 import { useMusic } from './lib/useMusic';
 
 export default function App() {
-  const reservations = useReservations();
+  const live = useReservations();
+  // los regalos con reservedBy en los datos cuentan como reservados para todos
+  const reservations = useMemo(() => {
+    const fixed = products.filter((p) => p.reservedBy).map((p) => p.id);
+    return { ...live, reserved: new Set([...live.reserved, ...fixed]) };
+  }, [live]);
   const [open, setOpen] = useState<{ id: string; intent?: 'reserve' } | null>(null);
   const music = useMusic();
   // pantalla de entrada -> el sol sube -> se va la pantalla
