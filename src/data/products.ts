@@ -114,7 +114,6 @@ export const products: Product[] = [
     imageAlt: 'Vela aromática glød en vaso blanco sobre toallas rayadas, junto a dos pelotas de lana',
     url: 'https://glodcasa.com/productos/vela-aromatica-laundry-morning/',
     note: 'Aroma a ROPA RECIÉN LAVADA, sí por favor.',
-    reservedBy: 'reservado por mis suegros',
     look: { variant: 'window', color: 'blueberry' },
   },
   {
@@ -143,5 +142,14 @@ export const products: Product[] = [
     url: 'https://www.plantaskolog.com.ar/productos/calathea-roseopicta-rosy-chica-qwmpp/',
     note: 'Simplemente bellísima.',
     look: { variant: 'window', color: 'grape' },
+  },
+  {
+    id: 'colonia-pibes',
+    name: 'Colonia Pibes',
+    image: 'products/colonia-pibes.jpg',
+    imageAlt: 'Caja verde y frasco de colonia Pibe\'s con dibujos de chicos haciendo deporte',
+    note: 'Hay que reponer AURA.',
+    reservedBy: 'reservado por mis suegros',
+    look: { variant: 'window', color: 'lime' },
   },
 ];
