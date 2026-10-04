@@ -88,3 +88,25 @@ html.has-gate {
 .gate__quiet {
   font-size: 1rem;
 }
+
+/* que el cartel nunca sea más ancho que la pantalla (antes el botón sin cortes lo ensanchaba
+   y en celulares quedaba corrido a la derecha) */
+.gate__panel {
+  width: min(100%, 620px);
+  min-width: 0;
+}
+.gate__enter {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.1;
+}
+@media (max-width: 420px) {
+  .gate__panel {
+    padding-inline: 18px;
+  }
+  .gate__enter {
+    font-size: 1.15rem;
+    padding-inline: 1em;
+  }
+}
