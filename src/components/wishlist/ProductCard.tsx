@@ -79,6 +79,21 @@ function Meta({ product }: { product: Product }) {
   return <div className="card__meta">{items}</div>;
 }
 
+/** Producto que va junto (ej: la maceta): foto chiquita + link propio. */
+export function Extra({ product }: { product: Product }) {
+  const x = product.extra;
+  if (!x) return null;
+  return (
+    <a className="extra" href={x.url} target="_blank" rel="noopener noreferrer">
+      {x.image && <img src={x.image} alt={x.imageAlt ?? ''} loading="lazy" />}
+      <span className="extra__text">
+        <span className="extra__plus" aria-hidden="true">+</span> {x.name} <span aria-hidden="true">↗</span>
+        <span className="sr-only">(abre en una pestaña nueva)</span>
+      </span>
+    </a>
+  );
+}
+
 function Actions({ product, reserved, mine, onOpen, onQuickReserve }: CardProps) {
   const store = storeName(product.url);
   if (product.linkReserves && product.url && !reserved) {
@@ -279,6 +294,7 @@ function WindowCard(p: VariantProps) {
           {product.description && <p className="card__desc">{product.description}</p>}
           <Meta product={product} />
           <Note text={product.note} />
+          <Extra product={product} />
           <Actions {...p} />
         </div>
       </Window>
