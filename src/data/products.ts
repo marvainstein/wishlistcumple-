@@ -126,4 +126,13 @@ export const products: Product[] = [
     note: 'Perfumito a jazmín por toda la casa, 10/10.',
     look: { variant: 'window', color: 'grape' },
   },
+  {
+    id: 'philodendron-pink-princess',
+    name: 'Philodendron Pink Princess - Variegado',
+    image: 'products/philodendron-pink-princess.webp',
+    imageAlt: 'Hoja de Philodendron Pink Princess verde oscura con manchas rosas, junto a un tutor de musgo',
+    url: 'https://www.plantaskolog.com.ar/productos/philodendron-pink-princess-mediano/',
+    note: 'Bellísimo es poco y una plantita más para la casa.',
+    look: { variant: 'window', color: 'strawberry' },
+  },
 ];
