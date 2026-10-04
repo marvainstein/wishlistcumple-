@@ -89,4 +89,13 @@ export const products: Product[] = [
     note: 'Me encanta prender velitas y tener rico aroma antes de dormir, sería hermoso.',
     look: { variant: 'window', color: 'tangerine', sticker: 'bonus' },
   },
+  {
+    id: 'merienda-fifa',
+    name: 'Merienda / Cena y Fifa con Waldo y Daro',
+    image: 'products/fifa-waldo-daro.jpg',
+    imageAlt: 'Dos chicos sentados en el piso frente a un televisor de tubo, jugando al fútbol en la PlayStation y mirando a cámara',
+    note: 'Una rica merienda o cenita por el barrio y unos partidos de Fifa.',
+    reservedBy: 'reservado por Waldo y Daro',
+    look: { variant: 'snapshot', color: 'grape', sticker: 'FIFA' },
+  },
 ];

@@ -133,7 +133,7 @@ function SnapshotCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
     <article className={cardClass('card--snapshot', reserved)} style={p.style} aria-label={product.name}>
-      <Window title={product.hearts === 3 ? 'top de la lista' : 'lo quiero'} color={color} screenClassName="snap__screen">
+      <Window title={product.hearts === 3 ? 'top de la lista' : product.hearts ? 'lo quiero' : '¡plan!'} color={color} screenClassName="snap__screen">
         <div className="snap__layout">
           <div className="snap__print">
             <span className="tape tape--a" aria-hidden="true" />
