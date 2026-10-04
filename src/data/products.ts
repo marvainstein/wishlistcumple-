@@ -14,7 +14,8 @@
  *  linkReserves true = tocar ese botón abre el link y además lo reserva para todos
  *            (reemplaza a "lo regalo yo"). linkLabelReserved: texto del link una vez reservado.
  *  note      nota personal (opcional).
- *  hearts    1 a 3, qué tanto lo quiero (opcional).
+ *  hearts    1 a 3 (opcional). En la web los corazones son decorativos e iguales
+ *            para todos; este número solo ordena qué regalos vuelan en el hero.
  *  size      talle / variante a comprar (opcional).
  *  reservedBy si alguien ya lo tiene asignado (ej: 'reservado por mis suegros'):
  *            se muestra como reservado para todos, con ese texto, y no se puede reservar.
@@ -75,7 +76,7 @@ export const products: Product[] = [
     imageAlt: 'Molinillo de café eléctrico de acero inoxidable con tolva translúcida llena de granos, display digital y tres botones con luz azul',
     url: 'https://www.mercadolibre.com.ar/molinillo-de-cafe-electrico-cuk-by-gadnic-acero-inoxidable-regulable-fresa-conica-tolva-275g-jarra-100g/p/MLA25021181#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=11&type=product&tracking_id=10039f25-d9a9-4835-8e34-22d219772ecc&wid=MLA1386952901&sid=search',
     note: 'Perfecto para moler los 60 gramos de café para el cold brewcito de verano.',
-    hearts: 2,
+    hearts: 3,
     look: { variant: 'hardware', color: 'blueberry', sticker: '60 g' },
   },
   {

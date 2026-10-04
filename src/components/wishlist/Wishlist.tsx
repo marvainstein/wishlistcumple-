@@ -13,17 +13,12 @@ interface WishlistProps {
 
 type Predicate = (p: Product, reserved: boolean) => boolean;
 
-/** Filtros armados con datos reales: corazones, disponibilidad y categorías si existen. */
+/** Filtros armados con datos reales: disponibilidad y categorías si existen. */
 function buildFilters(products: Product[]): { id: string; label: string; test: Predicate }[] {
   const filters: { id: string; label: string; test: Predicate }[] = [
     { id: 'todo', label: 'todo', test: () => true },
     { id: 'libres', label: 'sin reservar', test: (_p, r) => !r },
   ];
-  ([3, 2, 1] as const).forEach((h) => {
-    if (products.some((p) => p.hearts === h)) {
-      filters.push({ id: `h${h}`, label: '♥'.repeat(h), test: (p) => p.hearts === h });
-    }
-  });
   const categories = [...new Set(products.map((p) => p.category).filter(Boolean))] as string[];
   categories.forEach((c) => filters.push({ id: `cat:${c}`, label: c, test: (p) => p.category === c }));
   return filters;

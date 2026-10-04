@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Product } from '../../data/products';
 import type { Reservations } from '../../lib/useReservations';
-import { Hearts, heartsLabel } from '../ui/Hearts';
+import { Hearts } from '../ui/Hearts';
 import { Window } from '../ui/Window';
 import { storeName } from '../../lib/format';
 import './product-window.css';
@@ -105,19 +105,13 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
           </figure>
 
           <div className="pw__info">
+            <Hearts size="lg" />
             <h2 id="pw-title" className="pw__name">
               {product.name}
             </h2>
 
             <dl className="pw__specs">
-              {product.hearts && (
-                <div>
-                  <dt>qué tanto lo quiero</dt>
-                  <dd>
-                    <Hearts value={product.hearts} /> <span className="pw__muted">{heartsLabel(product.hearts)}</span>
-                  </dd>
-                </div>
-              )}
+              
               {product.size && (
                 <div>
                   <dt>talle / variante</dt>

@@ -152,7 +152,7 @@ function SnapshotCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
     <article className={cardClass('card--snapshot', reserved)} style={p.style} aria-label={product.name}>
-      <Window title={product.hearts === 3 ? 'top de la lista' : product.hearts ? 'lo quiero' : '¡plan!'} color={color} screenClassName="snap__screen">
+      <Window title="lo quiero" color={color} screenClassName="snap__screen">
         <div className="snap__layout">
           <div className="snap__print">
             <span className="tape tape--a" aria-hidden="true" />
@@ -167,8 +167,7 @@ function SnapshotCard(p: VariantProps) {
           </div>
           <div className="snap__info">
             <div className="snap__head">
-              <Hearts value={product.hearts} size="lg" />
-              {product.hearts === 3 && <span className="snap__top lcd">TOP DE LA LISTA</span>}
+              <Hearts size="lg" />
             </div>
             <Title product={product} onOpen={p.onOpen} />
             {product.description && <p className="card__desc">{product.description}</p>}
@@ -189,7 +188,6 @@ function SnapshotCard(p: VariantProps) {
 /* ------------------------------------------------------------------ */
 function HardwareCard(p: VariantProps) {
   const { product, reserved, color } = p;
-  const lit = product.hearts ?? 0;
   return (
     <article className={cardClass('card--hardware', reserved)} data-color={color} style={p.style} aria-label={product.name}>
       <div className="hw__shell">
@@ -202,14 +200,13 @@ function HardwareCard(p: VariantProps) {
         </div>
         <PhotoButton product={product} onOpen={p.onOpen} className="hw__window" />
         <div className="hw__panel">
-          <div className="hw__leds" role="img" aria-label={product.hearts ? `Qué tanto lo quiero: ${product.hearts} de 3` : 'Sin puntaje'}>
+          <div className="hw__leds" aria-hidden="true">
             {[1, 2, 3].map((n) => (
-              <span key={n} className={`hw__led${n <= lit ? ' is-on' : ''}`} aria-hidden="true">
+              <span key={n} className="hw__led is-on">
                 ♥
               </span>
             ))}
           </div>
-          <span className="hw__label" aria-hidden="true">nivel de ganas</span>
         </div>
         <div className="hw__body">
           <Title product={product} onOpen={p.onOpen} />
@@ -236,7 +233,7 @@ function BlisterCard(p: VariantProps) {
         <span className="bl__hole" aria-hidden="true" />
         <div className="bl__header">
           <span className="bl__brand" aria-hidden="true">NEW!</span>
-          <Hearts value={product.hearts} />
+          <Hearts />
         </div>
         <div className="bl__bubble">
           <PhotoButton product={product} onOpen={p.onOpen} className="bl__photo" />
@@ -275,7 +272,7 @@ function WindowCard(p: VariantProps) {
         <PhotoButton product={product} onOpen={p.onOpen} className="wc__photo" />
         <div className="wc__body">
           <div className="wc__row">
-            <Hearts value={product.hearts} size="sm" />
+            <Hearts size="sm" />
             {product.look?.sticker && <span className="sticker wc__sticker" data-color="lime">{product.look.sticker}</span>}
           </div>
           <Title product={product} onOpen={p.onOpen} />
