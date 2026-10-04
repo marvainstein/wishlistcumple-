@@ -1,0 +1,329 @@
+.hero {
+  position: relative;
+  padding: calc(var(--menubar-h) + clamp(28px, 6vw, 72px)) var(--gutter) clamp(70px, 9vw, 120px);
+  overflow: hidden;
+}
+
+.hero__stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 780px) minmax(260px, 1fr);
+  grid-template-areas: 'window stickers';
+  gap: clamp(16px, 3vw, 44px);
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* ---------- ventana principal ---------- */
+.hero__window {
+  grid-area: window;
+  z-index: 2;
+  animation: pop-in 0.7s var(--ease-spring) both;
+}
+
+.hero__screen {
+  display: grid;
+  gap: clamp(16px, 2.2vw, 24px);
+  padding: clamp(20px, 4vw, 44px) clamp(18px, 4vw, 48px) clamp(22px, 3.5vw, 36px);
+  background:
+    radial-gradient(circle, rgba(255, 95, 168, 0.16) 2px, transparent 2.5px) 0 0 / 18px 18px,
+    var(--cream);
+}
+
+.hero__eyebrow {
+  justify-self: start;
+  display: inline-flex;
+  gap: 10px;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  --rot: -3deg;
+  transform: rotate(-3deg);
+}
+
+.hero__title {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  font-family: var(--font-display);
+  font-size: var(--t-hero);
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+}
+
+/* letras de plástico extruido: el texto con gradiente encima, la "extrusión" detrás */
+/* letras tipo logo de dibujo animado: relleno rosa, contorno grueso, brillo y sombra dura */
+.hero__word {
+  position: relative;
+  display: inline-block;
+  color: var(--g1);
+  -webkit-text-stroke: 0.075em var(--outline);
+  paint-order: stroke fill;
+  text-shadow: 0.06em 0.07em 0 var(--outline);
+  transform: rotate(-4deg);
+}
+.hero__word::after {
+  /* brillo blanco arriba de cada letra */
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0 18%, rgba(255, 255, 255, 0) 19%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+}
+.hero__word--wish {
+  --g1: var(--strawberry);
+}
+.hero__word--list {
+  --g1: var(--strawberry);
+  margin-left: 0.55em;
+}
+.hero__word--list::before {
+  content: '★ ★ ★';
+  position: absolute;
+  left: -1.6em;
+  top: 0.38em;
+  font-size: 0.16em;
+  letter-spacing: 0.15em;
+  color: var(--outline);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.hero__tag {
+  position: absolute;
+  right: clamp(-6px, 2vw, 30px);
+  top: 46%;
+  --rot: 8deg;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 0.7rem + 0.7vw, 1.2rem);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+.hero__tag:hover {
+  --rot: -4deg;
+}
+
+.hero__lede {
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero__meter {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  max-width: 420px;
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+}
+.hero__meter-track {
+  height: 18px;
+  border: var(--line) solid var(--outline);
+  border-radius: 999px;
+  background: #fff;
+  overflow: hidden;
+}
+.hero__meter-fill {
+  display: block;
+  height: 100%;
+  min-width: 14px;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, var(--strawberry), var(--blueberry), var(--lime));
+  transition: width 0.8s var(--ease-spring);
+}
+.hero__meter-num {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* ---------- sol ---------- */
+.hero__sun {
+  --size: clamp(240px, 26vw, 400px);
+  top: clamp(10px, 2vw, 40px);
+  right: clamp(-40px, 5vw, 120px);
+  /* hueco donde arranca el sol que te acompaña (ver SunCompanion) */
+  position: absolute;
+  width: var(--size);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.hero__spark {
+  z-index: 3;
+  fill: #fff;
+}
+.hero__spark--1 { top: 10px; left: 110px; width: 30px; height: 30px; }
+.hero__spark--2 { bottom: 40px; right: 40%; width: 18px; height: 18px; }
+
+/* ---------- los regalos volando con su estela de color ---------- */
+.hero__stickers {
+  grid-area: stickers;
+  align-self: end;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: clamp(140px, 16vw, 240px) 0 0;
+  padding: 0 0 clamp(90px, 10vw, 150px);
+  list-style: none;
+  z-index: 2;
+}
+.hero__stickers li {
+  position: relative;
+  --rot: calc(var(--i) * 8deg - 8deg);
+}
+.hero__stickers li:nth-child(2) {
+  margin-top: -56px;
+}
+.hero__stickers li::before {
+  /* estela: se angosta hacia abajo, como volando hacia arriba */
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: 8%;
+  top: 55%;
+  height: clamp(140px, 14vw, 230px);
+  background: linear-gradient(180deg, var(--c) 0%, color-mix(in srgb, var(--c) 55%, transparent) 55%, transparent 100%);
+  clip-path: polygon(0 0, 100% 0, 58% 100%, 42% 100%);
+  transform: rotate(calc(var(--rot) * -0.6));
+  transform-origin: top center;
+}
+.photo-sticker {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 6px 6px 28px;
+  border: var(--line) solid var(--outline);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 0 0 5px var(--c), 4px 4px 0 5px var(--outline);
+  transform: rotate(var(--rot));
+  transition: transform 0.35s var(--ease-spring);
+  animation: pop-in 0.7s var(--ease-spring) both, float 4s ease-in-out infinite;
+  animation-delay: calc(0.25s + var(--i) * 0.12s), calc(var(--i) * -1.3s);
+}
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.photo-sticker:hover,
+.photo-sticker:focus-visible {
+  transform: rotate(0deg) scale(1.08);
+  z-index: 3;
+}
+.photo-sticker img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #fff;
+}
+.photo-sticker__cap {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-align: center;
+  color: var(--outline);
+}
+
+.hero__click {
+  position: absolute;
+  right: 1%;
+  bottom: 50px;
+  z-index: 4;
+  pointer-events: none;
+}
+.hero__click .sticker {
+  --rot: -10deg;
+  font-size: 1.05rem;
+}
+.hero__arrow {
+  left: -24px;
+  top: -30px;
+  transform: rotate(-30deg);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .hero__stage {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 300px);
+    grid-template-areas: 'window stickers';
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'window' 'stickers';
+    gap: 34px;
+  }
+  .hero__stickers {
+    margin-top: 40px;
+    gap: 12px;
+    padding: 0 6px 110px;
+  }
+  .hero__stickers li:nth-child(2) {
+    margin-top: -36px;
+  }
+  .photo-sticker {
+    padding: 4px 4px 22px;
+    border-radius: 14px;
+  }
+  .photo-sticker__cap {
+    font-size: 0.6rem;
+    bottom: 4px;
+  }
+  .hero__spark {
+    display: none;
+  }
+  .hero__sun {
+    --size: 200px;
+    top: 40px;
+    right: -50px;
+  }
+  .hero__window .win__status span:last-child {
+    display: none;
+  }
+  .hero__click {
+    bottom: 40px;
+    right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero__word--list {
+    margin-left: 0.35em;
+  }
+  .hero__tag {
+    top: auto;
+    bottom: -8px;
+    right: 0;
+  }
+  .hero__actions .plastic-btn {
+    flex: 1 1 100%;
+  }
+}
