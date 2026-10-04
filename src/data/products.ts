@@ -10,6 +10,9 @@
  *  name      nombre del regalo.
  *  image     foto principal.  imageAlt: descripción de la foto (accesibilidad).
  *  url       link para comprarlo (opcional; sin url no aparece el botón de compra).
+ *  linkLabel texto del botón del link si no es una tienda (ej: 'lo organizo yo').
+ *  linkReserves true = tocar ese botón abre el link y además lo reserva para todos
+ *            (reemplaza a "lo regalo yo"). linkLabelReserved: texto del link una vez reservado.
  *  note      nota personal (opcional).
  *  hearts    1 a 3, qué tanto lo quiero (opcional).
  *  size      talle / variante a comprar (opcional).
@@ -34,6 +37,11 @@ export interface Product {
   /** true si la foto es provisoria (se muestra una etiqueta "foto provisoria") */
   imageIsPlaceholder?: boolean;
   url?: string;
+  /** texto del botón del link cuando no es "ir a comprar" */
+  linkLabel?: string;
+  linkLabelReserved?: string;
+  /** el botón del link también reserva (sin paso de confirmación) */
+  linkReserves?: boolean;
   note?: string;
   hearts?: 1 | 2 | 3;
   size?: string;
@@ -96,7 +104,10 @@ export const products: Product[] = [
     imageAlt: 'Dos chicos sentados en el piso frente a un televisor de tubo, jugando al fútbol en la PlayStation y mirando a cámara',
     note: 'Una rica merienda o cenita por el barrio y unos partidos de Fifa.',
     hearts: 3,
-    reservedBy: 'reservado por Waldo y Daro',
+    url: 'https://chat.whatsapp.com/Jznw13dDPag9yZs60MCgUf',
+    linkLabel: 'lo organizo yo',
+    linkLabelReserved: 'ir al grupo de WhatsApp',
+    linkReserves: true,
     look: { variant: 'snapshot', color: 'grape', sticker: 'FIFA' },
   },
 ];
