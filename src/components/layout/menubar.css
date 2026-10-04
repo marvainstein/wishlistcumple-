@@ -36,8 +36,10 @@
 .menubar__links {
   display: flex;
   gap: 6px;
-  margin: 0;
-  padding: 0;
+  /* el overflow-x (scroll en pantallas chicas) también recorta en vertical:
+     se deja lugar para la sombra dura de abajo y el saltito del hover */
+  margin: -6px 0 -8px;
+  padding: 6px 2px 8px;
   list-style: none;
   min-width: 0;
   overflow-x: auto;
