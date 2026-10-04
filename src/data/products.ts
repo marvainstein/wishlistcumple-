@@ -56,6 +56,7 @@ export const products: Product[] = [
     image: 'products/spa-circuito.jpg',
     imageAlt: 'Luli relajándose al sol entre las plantas, con los ojos entrecerrados',
     imageIsPlaceholder: true,
+    url: 'https://topsecretspa.com/producto/experiencia-360/',
     note: 'Quiero relajarme así como Luli en la foto. La verdad me vendría bárbaro un spa, no sé dónde pero si me sacan esto las amo.',
     hearts: 3,
     look: { variant: 'snapshot', color: 'strawberry', sticker: 'modo Luli' },
