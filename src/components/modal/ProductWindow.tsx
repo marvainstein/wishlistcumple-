@@ -136,7 +136,7 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
                   <dd>{product.price}</dd>
                 </div>
               )}
-              {store && (
+              {store && !product.linkLabel && (
                 <div>
                   <dt>dónde</dt>
                   <dd>{store}</dd>
@@ -188,12 +188,21 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
               {(step === 'view' || step === 'done' || step === 'taken' || step === 'error') && (
                 <div className="pw__row">
                   {product.url && (
-                    <a className="plastic-btn" data-color="tangerine" href={product.url} target="_blank" rel="noopener noreferrer">
-                      ir a {store ?? 'la tienda'} <span aria-hidden="true">↗</span>
+                    <a
+                      className="plastic-btn"
+                      data-color="tangerine"
+                      href={product.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={product.linkReserves && !reserved ? doReserve : undefined}
+                    >
+                      {product.linkReserves && !reserved && <span aria-hidden="true">♡ </span>}
+                      {(reserved && product.linkLabelReserved) || product.linkLabel || `ir a ${store ?? 'la tienda'}`}{' '}
+                      <span aria-hidden="true">↗</span>
                       <span className="sr-only">(abre en una pestaña nueva)</span>
                     </a>
                   )}
-                  {!reserved && (
+                  {!reserved && !product.linkReserves && (
                     <button type="button" className="plastic-btn plastic-btn--ghost" onClick={() => setStep('confirm')}>
                       ♡ lo regalo yo
                     </button>

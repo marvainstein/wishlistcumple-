@@ -77,6 +77,7 @@ export function Wishlist({ products, reservations, onOpen }: WishlistProps) {
               reserved={reservations.reserved.has(p.id)}
               mine={reservations.mine.has(p.id)}
               onOpen={onOpen}
+              onQuickReserve={(id) => void reservations.reserve(id)}
               style={
                 {
                   '--tilt': TILTS[i % TILTS.length],

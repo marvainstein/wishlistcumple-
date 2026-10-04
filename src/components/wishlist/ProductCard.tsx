@@ -10,6 +10,8 @@ export interface CardProps {
   reserved: boolean;
   mine: boolean;
   onOpen: (id: string, intent?: 'reserve') => void;
+  /** reservar directo (para regalos cuyo link ya implica reservar) */
+  onQuickReserve?: (id: string) => void;
   style?: CSSProperties;
 }
 
@@ -77,8 +79,25 @@ function Meta({ product }: { product: Product }) {
   return <div className="card__meta">{items}</div>;
 }
 
-function Actions({ product, reserved, mine, onOpen }: CardProps) {
+function Actions({ product, reserved, mine, onOpen, onQuickReserve }: CardProps) {
   const store = storeName(product.url);
+  if (product.linkReserves && product.url && !reserved) {
+    return (
+      <div className="card__actions">
+        <a
+          className="plastic-btn plastic-btn--sm"
+          data-color="tangerine"
+          href={product.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => onQuickReserve?.(product.id)}
+        >
+          <span aria-hidden="true">♡</span> {product.linkLabel ?? 'lo regalo yo'} <span aria-hidden="true">↗</span>
+          <span className="sr-only">(lo reserva y abre el link en una pestaña nueva)</span>
+        </a>
+      </div>
+    );
+  }
   if (reserved) {
     return (
       <div className="card__actions">
@@ -92,7 +111,7 @@ function Actions({ product, reserved, mine, onOpen }: CardProps) {
     <div className="card__actions">
       {product.url ? (
         <a className="plastic-btn plastic-btn--sm" data-color="tangerine" href={product.url} target="_blank" rel="noopener noreferrer">
-          ir a comprar <span aria-hidden="true">↗</span>
+          {product.linkLabel ?? 'ir a comprar'} <span aria-hidden="true">↗</span>
           <span className="sr-only">en {store ?? 'la tienda'} (abre en una pestaña nueva)</span>
         </a>
       ) : (
@@ -101,7 +120,7 @@ function Actions({ product, reserved, mine, onOpen }: CardProps) {
       <button type="button" className="plastic-btn plastic-btn--sm plastic-btn--ghost" onClick={() => onOpen(product.id, 'reserve')}>
         <span aria-hidden="true">♡</span> lo regalo yo
       </button>
-      {store && <span className="card__store" aria-hidden="true">en {store}</span>}
+      {store && !product.linkLabel && <span className="card__store" aria-hidden="true">en {store}</span>}
     </div>
   );
 }
