@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Product } from '../../data/products';
 import type { Reservations } from '../../lib/useReservations';
 import { Hearts } from '../ui/Hearts';
+import { Extra } from '../wishlist/ProductCard';
 import { Window } from '../ui/Window';
 import { storeName } from '../../lib/format';
 import './product-window.css';
@@ -145,6 +146,8 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
                 {product.note}
               </blockquote>
             )}
+
+            <Extra product={product} />
 
             <div className="pw__actions" aria-live="polite">
               {step === 'confirm' && !reserved && (
