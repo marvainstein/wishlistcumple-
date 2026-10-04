@@ -6,13 +6,15 @@
   --shift: 0px;
   position: relative;
   container-type: inline-size;
-  transform: translateY(var(--shift)) rotate(var(--tilt));
+  /* el desplazamiento va como margen (no transform) para que la grilla le reserve lugar */
+  margin-top: var(--shift);
+  transform: rotate(var(--tilt));
   transition: transform 0.4s var(--ease-spring), filter 0.3s;
   animation: pop-in 0.6s var(--ease-spring) both;
 }
 .card:hover,
 .card:focus-within {
-  transform: translateY(calc(var(--shift) - 8px)) rotate(0deg);
+  transform: translateY(-8px) rotate(0deg);
   z-index: 5;
 }
 
