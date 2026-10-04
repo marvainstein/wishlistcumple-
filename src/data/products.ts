@@ -55,6 +55,8 @@ export interface Product {
     variant?: CardVariant;
     color?: PlasticColor;
     sticker?: string;
+    /** foto con la saturación subida (y sin atenuar aunque esté reservada) */
+    vivid?: boolean;
   };
 }
 
@@ -150,6 +152,6 @@ export const products: Product[] = [
     imageAlt: 'Caja verde y frasco de colonia Pibe\'s con dibujos de chicos haciendo deporte',
     note: 'Hay que reponer AURA.',
     reservedBy: 'reservado por mis suegros',
-    look: { variant: 'window', color: 'lime' },
+    look: { variant: 'window', color: 'lime', vivid: true },
   },
 ];
