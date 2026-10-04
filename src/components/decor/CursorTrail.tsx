@@ -5,6 +5,8 @@ const COLORS = ['#ff5fa8', '#4fc3f7', '#7ed957'];
 const OUTLINE = '#1d0b22';
 const LIFE_MS = 420; // cuánto dura cada punto de la estela
 const BAND = 9; // ancho de cada franja (px) en la punta
+const COLOR_ALPHA = 0.6;
+const OUTLINE_ALPHA = 0.35;
 
 interface Pt {
   x: number;
@@ -55,9 +57,10 @@ export function CursorTrail() {
             const ny = dx / len;
             const life = 1 - (now - b.t) / LIFE_MS; // 1 = recién, 0 = viejo
             const w = BAND * (0.25 + 0.75 * life);
-            ctx.globalAlpha = Math.max(0, life);
-            // butt en las franjas: sin "puntitos" donde se superponen los segmentos
-            ctx.lineCap = pass === 0 ? 'round' : 'butt';
+            // translúcida; el contorno más suave que los colores
+            ctx.globalAlpha = Math.max(0, life) * (pass === 0 ? OUTLINE_ALPHA : COLOR_ALPHA);
+            // butt: sin punto oscuro en la punta ni "puntitos" en las uniones
+            ctx.lineCap = 'butt';
             if (pass === 0) {
               // contorno: una franja ancha oscura detrás de las tres
               ctx.strokeStyle = OUTLINE;
