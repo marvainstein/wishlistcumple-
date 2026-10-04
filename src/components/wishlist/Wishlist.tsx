@@ -26,7 +26,7 @@ function buildFilters(products: Product[]): { id: string; label: string; test: P
 
 /* inclinaciones "a mano" que rotan entre cards: caos controlado */
 const TILTS = ['-1.4deg', '1.2deg', '-0.6deg', '1.6deg', '-1.1deg', '0.8deg'];
-const SHIFTS = ['0px', '48px', '-14px', '26px', '8px', '-6px'];
+const SHIFTS = ['0px', '48px', '12px', '28px', '18px', '4px']; // solo hacia abajo: nunca se pisan
 
 export function Wishlist({ products, reservations, onOpen }: WishlistProps) {
   const [active, setActive] = useState('todo');
