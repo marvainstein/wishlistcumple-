@@ -96,7 +96,7 @@ export const products: Product[] = [
     imageAlt: 'Vela de cera de soja en un recipiente de vidrio ámbar acanalado, con la tapa apoyada al lado, bajo la luz del sol',
     url: 'https://www.blancadecocafe.com.ar/productos/vela-glowy/',
     note: 'Me encanta prender velitas y tener rico aroma antes de dormir, sería hermoso.',
-    look: { variant: 'window', color: 'tangerine', sticker: 'bonus' },
+    look: { variant: 'window', color: 'tangerine' },
   },
   {
     id: 'merienda-fifa',
@@ -110,5 +110,23 @@ export const products: Product[] = [
     linkLabelReserved: 'ir al grupo de WhatsApp',
     linkReserves: true,
     look: { variant: 'snapshot', color: 'grape', sticker: 'FIFA' },
+  },
+  {
+    id: 'vela-mango-nectar',
+    name: 'Vela Mango Néctar',
+    image: 'products/vela-mango-nectar.webp',
+    imageAlt: 'Vela aromática glød en vaso blanco rodeada de mango cortado y cubos de hielo con fruta',
+    url: 'https://glodcasa.com/productos/vela-aromatica-mango-nectar/',
+    note: 'Prender una velita frutal hace los días mil veces más lindos.',
+    look: { variant: 'window', color: 'bondi' },
+  },
+  {
+    id: 'vela-laundry-morning',
+    name: 'Vela Laundry Morning',
+    image: 'products/vela-laundry-morning.webp',
+    imageAlt: 'Vela aromática glød en vaso blanco sobre toallas rayadas, junto a dos pelotas de lana',
+    url: 'https://glodcasa.com/productos/vela-aromatica-laundry-morning/',
+    note: 'Aroma a ROPA RECIÉN LAVADA, sí por favor.',
+    look: { variant: 'window', color: 'blueberry' },
   },
 ];
