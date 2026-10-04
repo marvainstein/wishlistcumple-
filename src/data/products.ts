@@ -83,8 +83,8 @@ export const products: Product[] = [
   {
     id: 'vela-glowy',
     name: 'Vela Glowy - Brownish',
-    image: 'products/vela-glowy.jpg',
-    imageAlt: 'Velas en recipientes de cerámica marrón, una encendida, sobre una mesa con luz cálida',
+    image: 'products/vela-glowy.webp',
+    imageAlt: 'Vela de cera de soja en un recipiente de vidrio ámbar acanalado, con la tapa apoyada al lado, bajo la luz del sol',
     url: 'https://www.blancadecocafe.com.ar/productos/vela-glowy/',
     note: 'Me encanta prender velitas y tener rico aroma antes de dormir, sería hermoso.',
     look: { variant: 'window', color: 'tangerine', sticker: 'bonus' },
@@ -95,6 +95,7 @@ export const products: Product[] = [
     image: 'products/fifa-waldo-daro.jpg',
     imageAlt: 'Dos chicos sentados en el piso frente a un televisor de tubo, jugando al fútbol en la PlayStation y mirando a cámara',
     note: 'Una rica merienda o cenita por el barrio y unos partidos de Fifa.',
+    hearts: 3,
     reservedBy: 'reservado por Waldo y Daro',
     look: { variant: 'snapshot', color: 'grape', sticker: 'FIFA' },
   },
