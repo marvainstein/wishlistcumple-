@@ -80,4 +80,13 @@ export const products: Product[] = [
     reservedBy: 'reservado por mis suegros',
     look: { variant: 'window', color: 'lime' },
   },
+  {
+    id: 'vela-glowy',
+    name: 'Vela Glowy - Brownish',
+    image: 'products/vela-glowy.jpg',
+    imageAlt: 'Velas en recipientes de cerámica marrón, una encendida, sobre una mesa con luz cálida',
+    url: 'https://www.blancadecocafe.com.ar/productos/vela-glowy/',
+    note: 'Me encanta prender velitas y tener rico aroma antes de dormir, sería hermoso.',
+    look: { variant: 'window', color: 'tangerine', sticker: 'bonus' },
+  },
 ];
