@@ -116,4 +116,13 @@ export const products: Product[] = [
     note: 'Aroma a ROPA RECIÉN LAVADA, sí por favor.',
     look: { variant: 'window', color: 'blueberry' },
   },
+  {
+    id: 'vela-jazmin',
+    name: 'Vela Jazmín',
+    image: 'products/vela-jazmin.webp',
+    imageAlt: 'Vela aromática glød encendida en vaso blanco, sobre una piedra, junto a una rama de flores de jazmín',
+    url: 'https://glodcasa.com/productos/vela-aromatica-jazmin-bloom/',
+    note: 'Perfumito a jazmín por toda la casa, 10/10.',
+    look: { variant: 'window', color: 'grape' },
+  },
 ];
