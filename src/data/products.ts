@@ -135,4 +135,13 @@ export const products: Product[] = [
     note: 'Bellísimo es poco y una plantita más para la casa.',
     look: { variant: 'window', color: 'strawberry' },
   },
+  {
+    id: 'calathea-roseopicta-rosy',
+    name: 'Calathea Roseopicta Rosy Chica',
+    image: 'products/calathea-roseopicta-rosy.webp',
+    imageAlt: 'Calathea Roseopicta Rosy en maceta chica, con hojas rosas de borde verde oscuro, sostenida en una mano',
+    url: 'https://www.plantaskolog.com.ar/productos/calathea-roseopicta-rosy-chica-qwmpp/',
+    note: 'Simplemente bellísima.',
+    look: { variant: 'window', color: 'grape' },
+  },
 ];
