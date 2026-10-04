@@ -268,7 +268,7 @@ function WindowCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
     <article className={cardClass('card--window', reserved)} style={p.style} aria-label={product.name}>
-      <Window title={product.hearts ? 'lo quiero' : '¡bonus!'} color={color}>
+      <Window title="lo quiero" color={color}>
         <PhotoButton product={product} onOpen={p.onOpen} className="wc__photo" />
         <div className="wc__body">
           <div className="wc__row">
