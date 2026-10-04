@@ -85,6 +85,7 @@ export const products: Product[] = [
     image: 'products/cafe-guatemala-geisha.webp',
     imageAlt: 'Bolsa blanca de café Puerto Blest "Guatemala, Santa Rita, Geisha lavado" apoyada sobre un estante de piedra',
     url: 'https://www.cafepuertoblest.com/productos/guatemala-geisha-lavado/?recommendation_source=complementary-carousel&recommender=manual',
+    note: 'Un cuartito de café tope de gama para las meriendas.',
     hearts: 3,
     look: { variant: 'window', color: 'lime' },
   },
