@@ -136,10 +136,12 @@ export function ProductWindow({ product, intent, reservations, onClose }: Produc
                   <dd>{product.price}</dd>
                 </div>
               )}
-              <div>
-                <dt>dónde</dt>
-                <dd>{store ?? 'sin link todavía'}</dd>
-              </div>
+              {store && (
+                <div>
+                  <dt>dónde</dt>
+                  <dd>{store}</dd>
+                </div>
+              )}
             </dl>
 
             {product.description && <p className="pw__desc">{product.description}</p>}
