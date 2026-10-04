@@ -45,8 +45,8 @@ type VariantProps = CardProps & { color: PlasticColor };
 /* Piezas compartidas                                                  */
 /* ------------------------------------------------------------------ */
 
-function cardClass(base: string, reserved: boolean) {
-  return `card ${base}${reserved ? ' is-reserved' : ''}`;
+function cardClass(base: string, reserved: boolean, product?: Product) {
+  return `card ${base}${reserved ? ' is-reserved' : ''}${product?.look?.vivid ? ' is-vivid' : ''}`;
 }
 
 /** La foto es un botón real que abre la ventana del producto. */
@@ -151,7 +151,7 @@ function Title({ product, onOpen }: { product: Product; onOpen: CardProps['onOpe
 function SnapshotCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
-    <article className={cardClass('card--snapshot', reserved)} style={p.style} aria-label={product.name}>
+    <article className={cardClass('card--snapshot', reserved, product)} style={p.style} aria-label={product.name}>
       <Window title="lo quiero" color={color} screenClassName="snap__screen">
         <div className="snap__layout">
           <div className="snap__print">
@@ -189,7 +189,7 @@ function SnapshotCard(p: VariantProps) {
 function HardwareCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
-    <article className={cardClass('card--hardware', reserved)} data-color={color} style={p.style} aria-label={product.name}>
+    <article className={cardClass('card--hardware', reserved, product)} data-color={color} style={p.style} aria-label={product.name}>
       <div className="hw__shell">
         <div className="hw__top">
           <span className="hw__brand">★ ★ ★</span>
@@ -228,7 +228,7 @@ function HardwareCard(p: VariantProps) {
 function BlisterCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
-    <article className={cardClass('card--blister', reserved)} data-color={color} style={p.style} aria-label={product.name}>
+    <article className={cardClass('card--blister', reserved, product)} data-color={color} style={p.style} aria-label={product.name}>
       <div className="bl__card">
         <span className="bl__hole" aria-hidden="true" />
         <div className="bl__header">
@@ -267,7 +267,7 @@ function BlisterCard(p: VariantProps) {
 function WindowCard(p: VariantProps) {
   const { product, reserved, color } = p;
   return (
-    <article className={cardClass('card--window', reserved)} style={p.style} aria-label={product.name}>
+    <article className={cardClass('card--window', reserved, product)} style={p.style} aria-label={product.name}>
       <Window title="lo quiero" color={color}>
         <PhotoButton product={product} onOpen={p.onOpen} className="wc__photo" />
         <div className="wc__body">
