@@ -66,8 +66,11 @@ html.has-gate {
   paint-order: stroke fill;
   text-shadow: 0.06em 0.07em 0 var(--outline);
   transform: rotate(-3deg);
+  /* la inclinación y la sombra ocupan más abajo: aire para el botón (y su anillo de foco) */
+  margin-bottom: 0.32em;
 }
 .gate__enter {
+  margin-top: 6px;
   min-height: 60px;
   padding-inline: 1.8em;
   font-size: 1.4rem;
