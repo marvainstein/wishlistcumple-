@@ -1,0 +1,357 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--menubar-h) + 24px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--t-md);
+  line-height: 1.55;
+  color: var(--outline);
+  /* cielo arriba; el pasto lo pone .meadow */
+  background-color: var(--grass-mid);
+  background-image: linear-gradient(180deg, var(--sky-top) 0, var(--sky-mid) 520px, var(--sky-low) 900px, var(--sky-low) 1100px);
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='26' viewBox='0 0 22 26'%3E%3Cpath d='M2 2 L2 20 L7 15.5 L10.5 23 L14 21.5 L10.6 14.2 L17.5 14 Z' fill='%23fff' stroke='%231c2a56' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 2, auto;
+}
+
+/* grano sutil sobre todo (que no quede digital y liso) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a,
+button,
+[role='button'],
+label {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26' viewBox='0 0 24 26'%3E%3Cpath d='M8 2.5c1.2 0 2 .9 2 2V12l1-.2V9.8c0-1.1.9-2 2-2s2 .9 2 2v2.4l.8-.1c1.2-.2 2.2.7 2.2 1.9v1.1l.4-.1c1.2-.2 2.1.7 2.1 1.9V19c0 2.8-2.3 5-5 5h-4.2c-1.5 0-2.9-.7-3.9-1.8L3 17.4c-.8-.9-.7-2.2.2-2.9.8-.6 1.9-.5 2.6.2L6 15V4.5c0-1.1.9-2 2-2z' fill='%23fff' stroke='%231c2a56' stroke-width='1.8' stroke-linejoin='round'/%3E%3C/svg%3E") 8 2, pointer;
+}
+
+main {
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  text-wrap: balance;
+  line-height: 1;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 4px solid var(--strawberry);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -60px;
+  z-index: 300;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--screen);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: calc(var(--menubar-h) + 10px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Botón de plástico: se hunde de verdad al apretarlo                  */
+/* ------------------------------------------------------------------ */
+:where(.plastic-btn) {
+  --c: var(--tangerine);
+  --c-dark: var(--tangerine-dark);
+  --c-ink: var(--tangerine-ink);
+}
+/* Botón de dibujo animado: contorno grueso y sombra dura que se "aplasta" al apretar */
+.plastic-btn {
+  --depth: 5px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.55em 1.35em;
+  border: var(--line) solid var(--outline);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--c-ink);
+  background:
+    radial-gradient(60% 40% at 30% 22%, rgba(255, 255, 255, 0.75) 0 40%, transparent 42%),
+    var(--c);
+  box-shadow: 0 var(--depth) 0 var(--outline);
+  transform: translateY(0);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.plastic-btn:hover {
+  transform: translateY(-2px) rotate(-1.5deg);
+  box-shadow: 0 calc(var(--depth) + 2px) 0 var(--outline);
+}
+.plastic-btn:active {
+  transform: translateY(var(--depth));
+  box-shadow: 0 0 0 var(--outline);
+}
+.plastic-btn[disabled] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+.plastic-btn--ghost {
+  --c: var(--cream);
+  --c-ink: var(--outline);
+}
+.plastic-btn--sm {
+  min-height: 40px;
+  padding: 0.4em 1em;
+  font-size: 0.9rem;
+  --depth: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Panel de dibujo animado                                             */
+/* ------------------------------------------------------------------ */
+:where(.win) {
+  --c: var(--grape);
+  --c-dark: var(--grape-dark);
+  --c-ink: var(--grape-ink);
+}
+/* Panel de dibujo animado: color plano, contorno grueso, sombra dura desplazada */
+.toon {
+  position: relative;
+  border: var(--line) solid var(--outline);
+  border-radius: var(--r-lg);
+  background: var(--c);
+  box-shadow: var(--hard) var(--hard) 0 var(--outline);
+}
+.win {
+  padding: 0 10px 10px;
+}
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 4px 4px 4px 8px;
+  color: var(--c-ink);
+}
+.win__stars,
+.win__heart {
+  flex: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  -webkit-text-stroke: 1.2px var(--outline);
+  paint-order: stroke fill;
+}
+.win__heart {
+  font-size: 1.3rem;
+  color: var(--strawberry);
+}
+.win__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  text-align: center;
+  color: #fff;
+  -webkit-text-stroke: 2px var(--outline);
+  paint-order: stroke fill;
+}
+.win__close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: var(--line) solid var(--outline);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--outline);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1;
+  box-shadow: 0 3px 0 var(--outline);
+  transition: transform 0.12s var(--ease-spring);
+}
+.win__close:hover {
+  transform: rotate(90deg) scale(1.08);
+}
+.win__close:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.win__screen {
+  position: relative;
+  border: var(--line) solid var(--outline);
+  border-radius: calc(var(--r-lg) - 10px);
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.win__status {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 8px 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--c-ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Stickers                                                            */
+/* ------------------------------------------------------------------ */
+:where(.sticker) {
+  --c: var(--lime);
+  --c-ink: var(--lime-ink);
+}
+.sticker {
+  display: inline-grid;
+  place-items: center;
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  border: var(--line) solid var(--outline);
+  background: var(--c);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: var(--t-md);
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--outline);
+  transform: rotate(var(--rot, -6deg));
+  transition: transform 0.35s var(--ease-spring);
+}
+.sticker--burst {
+  width: 6.2em;
+  height: 6.2em;
+  padding: 0.6em;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  clip-path: polygon(50% 0%, 61% 13%, 77% 6%, 79% 23%, 96% 25%, 88% 40%, 100% 52%, 87% 62%, 93% 79%, 76% 79%, 70% 96%, 56% 86%, 43% 99%, 35% 83%, 18% 91%, 18% 74%, 2% 68%, 12% 54%, 0% 41%, 16% 34%, 11% 17%, 28% 17%, 34% 2%);
+  filter: drop-shadow(2.5px 0 0 var(--outline)) drop-shadow(-2.5px 0 0 var(--outline)) drop-shadow(0 2.5px 0 var(--outline)) drop-shadow(0 -2.5px 0 var(--outline));
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* LCD                                                                 */
+/* ------------------------------------------------------------------ */
+/* etiqueta tipo globo de historieta (la clase se llama .lcd por historia) */
+.lcd {
+  display: inline-block;
+  padding: 0.25em 0.8em;
+  border: var(--line) solid var(--outline);
+  border-radius: 999px;
+  background: var(--tangerine);
+  color: var(--outline);
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  box-shadow: 3px 3px 0 var(--outline);
+}
+
+/* ------------------------------------------------------------------ */
+/* Movimiento: floats suaves; nada si el usuario lo pide               */
+/* ------------------------------------------------------------------ */
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* usa translate/scale (no transform) para no pisar las rotaciones de cada pieza */
+@keyframes pop-in {
+  from { opacity: 0; translate: 0 14px; scale: 0.96; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* globo de texto de historieta para textos que van directo sobre la foto */
+.bubble-text {
+  padding: 10px 16px;
+  border: var(--line) solid var(--outline);
+  border-radius: 22px;
+  background: var(--cream);
+  box-shadow: 4px 4px 0 var(--outline);
+  color: var(--outline);
+}

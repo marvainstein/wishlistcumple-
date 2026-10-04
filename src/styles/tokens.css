@@ -1,0 +1,92 @@
+/*
+ * Design tokens
+ * Layout concept: dibujo animado de principios de los 2000 pegado sobre la foto
+ * de las colinas: paneles planos con contorno grueso, sombras duras, estrellas,
+ * corazones y estelas de color (rosa, celeste, verde). Una sola apariencia, a propósito.
+ */
+:root {
+  color-scheme: light;
+
+  /* cielo */
+  --sky-top: #2a78dd;
+  --sky-mid: #5ea8f2;
+  --sky-low: #bfe3ff;
+  /* pasto */
+  --grass-hi: #a6e44f;
+  --grass: #6cc13a;
+  --grass-mid: #4fa52c;
+  --grass-dark: #2f7a1c;
+  /* sol */
+  --sun: #ffd23a;
+  --sun-hot: #ffb21f;
+
+  --screen: #fff6ea;                  /* interior crema de los paneles */
+  --screen-solid: #f7fbff;
+  --paper: #fff3a8;                    /* post-it */
+
+  /* texto directo sobre el paisaje */
+  --on-scene: #ffffff;
+  --scene-shadow: 0 2px 0 rgba(23, 74, 18, 0.55), 0 6px 20px rgba(23, 74, 18, 0.45);
+
+  /* tinta (azul noche, nunca negro puro) */
+  --ink: #1d0b22;
+  --ink-soft: #5a3a5e;
+  --ink-faint: rgba(29, 11, 34, 0.18);
+
+  /* colores de dibujo animado (los nombres se usan en products.ts) */
+  --strawberry: #ff5fa8; --strawberry-dark: #d6307e; --strawberry-ink: #2a0a1c;  /* rosa */
+  --blueberry: #4fc3f7;  --blueberry-dark: #1f93c9;  --blueberry-ink: #08243a;  /* celeste */
+  --lime: #7ed957;       --lime-dark: #4fa82e;       --lime-ink: #10300a;       /* verde */
+  --tangerine: #ffd23f;  --tangerine-dark: #e0a800;  --tangerine-ink: #2e2000;  /* amarillo */
+  --grape: #a23b9d;      --grape-dark: #6e1f6a;      --grape-ink: #ffffff;      /* magenta 70s */
+  --bondi: #ff8a3d;      --bondi-dark: #d65f12;      --bondi-ink: #2e1200;      /* naranja */
+  --graphite: #1d0b22;   --graphite-dark: #000000;   --graphite-ink: #ffffff;
+
+  /* el trazo de dibujo animado */
+  --outline: #1d0b22;
+  --line: 3.5px;
+  --hard: 6px;
+  --cream: #fff6ea;
+
+  /* LCD */
+  --lcd-bg: #cdeedd;
+  --lcd-ink: #17322a;
+
+  /* tipografía */
+  --font-display: 'Bagel Fat One', 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-mono: 'DM Sans', 'Helvetica Neue', Arial, system-ui, sans-serif; /* textos chicos (antes monoespaciada) */
+  --font-lcd: 'VT323', ui-monospace, 'Courier New', monospace;
+
+  /* escala tipográfica */
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-md: 1rem;
+  --t-lg: 1.25rem;
+  --t-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem);
+  --t-2xl: clamp(2.4rem, 1.6rem + 3.6vw, 4.4rem);
+  --t-hero: clamp(5.4rem, 1rem + 15vw, 11.5rem);
+
+  /* forma */
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-lg: 30px;
+  --bezel: 12px;
+
+  /* sombras */
+  --shadow-drop: 0 22px 40px -18px rgba(18, 60, 120, 0.5), 0 4px 10px rgba(18, 60, 120, 0.12);
+  --shadow-lift: 0 34px 50px -18px rgba(18, 60, 120, 0.55), 0 8px 16px rgba(18, 60, 120, 0.16);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --gutter: clamp(16px, 4vw, 48px);
+  --menubar-h: 44px;
+}
+
+/* cada componente elige su color con data-color */
+[data-color='tangerine']  { --c: var(--tangerine);  --c-dark: var(--tangerine-dark);  --c-ink: var(--tangerine-ink); }
+[data-color='blueberry']  { --c: var(--blueberry);  --c-dark: var(--blueberry-dark);  --c-ink: var(--blueberry-ink); }
+[data-color='lime']       { --c: var(--lime);       --c-dark: var(--lime-dark);       --c-ink: var(--lime-ink); }
+[data-color='grape']      { --c: var(--grape);      --c-dark: var(--grape-dark);      --c-ink: var(--grape-ink); }
+[data-color='strawberry'] { --c: var(--strawberry); --c-dark: var(--strawberry-dark); --c-ink: var(--strawberry-ink); }
+[data-color='bondi']      { --c: var(--bondi);      --c-dark: var(--bondi-dark);      --c-ink: var(--bondi-ink); }
+[data-color='graphite']   { --c: var(--graphite);   --c-dark: var(--graphite-dark);   --c-ink: var(--graphite-ink); }
