@@ -10,6 +10,8 @@
  *  name      nombre del regalo.
  *  image     foto principal.  imageAlt: descripción de la foto (accesibilidad).
  *  url       link para comprarlo (opcional; sin url no aparece el botón de compra).
+ *  extra     un segundo producto que va junto (ej: la maceta de una planta):
+ *            { name, url, image?, imageAlt? }. Se muestra con su foto chiquita y su link.
  *  linkLabel texto del botón del link si no es una tienda (ej: 'lo organizo yo').
  *  linkReserves true = tocar ese botón abre el link y además lo reserva para todos
  *            (reemplaza a "lo regalo yo"). linkLabelReserved: texto del link una vez reservado.
@@ -38,6 +40,8 @@ export interface Product {
   /** true si la foto es provisoria (se muestra una etiqueta "foto provisoria") */
   imageIsPlaceholder?: boolean;
   url?: string;
+  /** producto complementario que va con este (foto chica + link propio) */
+  extra?: { name: string; url: string; image?: string; imageAlt?: string };
   /** texto del botón del link cuando no es "ir a comprar" */
   linkLabel?: string;
   linkLabelReserved?: string;
@@ -129,19 +133,31 @@ export const products: Product[] = [
   },
   {
     id: 'philodendron-pink-princess',
-    name: 'Philodendron Pink Princess - Variegado',
+    name: 'Philodendron Pink Princess - Variegado + Maceta autorriego',
     image: 'products/philodendron-pink-princess.webp',
     imageAlt: 'Hoja de Philodendron Pink Princess verde oscura con manchas rosas, junto a un tutor de musgo',
     url: 'https://www.plantaskolog.com.ar/productos/philodendron-pink-princess-mediano/',
+    extra: {
+      name: 'Maceta autorriego 15 cm verde',
+      url: 'https://www.plantaskolog.com.ar/productos/maceta-autorriego-15cm-verde-1q0bz/',
+      image: 'products/maceta-autorriego-15.webp',
+      imageAlt: 'Maceta autorriego verde con reservorio transparente, sostenida en una mano',
+    },
     note: 'Bellísimo es poco y una plantita más para la casa.',
     look: { variant: 'window', color: 'strawberry' },
   },
   {
     id: 'calathea-roseopicta-rosy',
-    name: 'Calathea Roseopicta Rosy Chica',
+    name: 'Calathea Roseopicta Rosy Chica + Maceta autorriego',
     image: 'products/calathea-roseopicta-rosy.webp',
     imageAlt: 'Calathea Roseopicta Rosy en maceta chica, con hojas rosas de borde verde oscuro, sostenida en una mano',
     url: 'https://www.plantaskolog.com.ar/productos/calathea-roseopicta-rosy-chica-qwmpp/',
+    extra: {
+      name: 'Maceta autorriego 12 cm verde',
+      url: 'https://www.plantaskolog.com.ar/productos/maceta-autorriego-12cm-verde-2h6sf/',
+      image: 'products/maceta-autorriego-12.webp',
+      imageAlt: 'Maceta autorriego verde grisácea con reservorio transparente, sostenida en una mano',
+    },
     note: 'Simplemente bellísima.',
     look: { variant: 'window', color: 'grape' },
   },
