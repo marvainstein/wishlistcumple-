@@ -43,10 +43,10 @@ export function IntroGate({ hasMusic, onEnter }: IntroGateProps) {
           ¡llegó el cumple!
         </h1>
         <button type="button" className="plastic-btn gate__enter" data-color="strawberry" onClick={() => enter(true)} autoFocus>
-          ☀ ¡entrar!{hasMusic && <span className="gate__note"> (con música)</span>}
+          ☀ {hasMusic ? '¡entrar con música!' : '¡entrar!'}
         </button>
         {hasMusic && (
-          <button type="button" className="gate__quiet" onClick={() => enter(false)}>
+          <button type="button" className="plastic-btn plastic-btn--ghost gate__quiet" onClick={() => enter(false)}>
             entrar sin sonido
           </button>
         )}
