@@ -7,7 +7,9 @@ import { MUSIC_SRC } from '../config';
  */
 export function useMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [available, setAvailable] = useState(false);
+  // iPhone no precarga audio hasta que la persona toca algo (nunca llega 'canplay'),
+  // así que se da por disponible si el archivo existe, sin esperar a que cargue.
+  const [available, setAvailable] = useState(Boolean(MUSIC_SRC));
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -16,18 +18,20 @@ export function useMusic() {
     audio.loop = true;
     audio.volume = 0.55;
     audio.preload = 'auto';
-    const ok = () => setAvailable(true);
     const fail = () => setAvailable(false);
+    fetch(MUSIC_SRC, { method: 'HEAD' })
+      .then((r) => {
+        if (!r.ok) fail();
+      })
+      .catch(() => {});
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
-    audio.addEventListener('canplay', ok);
     audio.addEventListener('error', fail);
     audio.addEventListener('play', onPlay);
     audio.addEventListener('pause', onPause);
     audioRef.current = audio;
     return () => {
       audio.pause();
-      audio.removeEventListener('canplay', ok);
       audio.removeEventListener('error', fail);
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
