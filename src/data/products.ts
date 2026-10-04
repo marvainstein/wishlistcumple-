@@ -86,7 +86,6 @@ export const products: Product[] = [
     imageAlt: 'Bolsa blanca de café Puerto Blest "Guatemala, Santa Rita, Geisha lavado" apoyada sobre un estante de piedra',
     url: 'https://www.cafepuertoblest.com/productos/guatemala-geisha-lavado/?recommendation_source=complementary-carousel&recommender=manual',
     hearts: 3,
-    reservedBy: 'reservado por mis suegros',
     look: { variant: 'window', color: 'lime' },
   },
   {
@@ -114,6 +113,7 @@ export const products: Product[] = [
     imageAlt: 'Vela aromática glød en vaso blanco sobre toallas rayadas, junto a dos pelotas de lana',
     url: 'https://glodcasa.com/productos/vela-aromatica-laundry-morning/',
     note: 'Aroma a ROPA RECIÉN LAVADA, sí por favor.',
+    reservedBy: 'reservado por mis suegros',
     look: { variant: 'window', color: 'blueberry' },
   },
   {
