@@ -9,6 +9,7 @@ import { HowItWorks } from './components/sections/HowItWorks';
 import { FinalCta } from './components/sections/FinalCta';
 import { ProductWindow } from './components/modal/ProductWindow';
 import { ClickSparkles } from './components/decor/ClickSparkles';
+import { CursorTrail } from './components/decor/CursorTrail';
 import { Scene } from './components/decor/Decor';
 import { SunCompanion } from './components/decor/SunCompanion';
 import { IntroGate } from './components/intro/IntroGate';
@@ -65,6 +66,7 @@ export default function App() {
         onClose={() => setOpen(null)}
       />
       <ClickSparkles />
+      <CursorTrail />
       {gate !== 'gone' && <IntroGate hasMusic={music.available} onEnter={enter} />}
     </>
   );

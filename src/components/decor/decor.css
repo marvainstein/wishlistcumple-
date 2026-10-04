@@ -117,3 +117,13 @@
   25% { opacity: 1; }
   100% { translate: 0 0; opacity: 1; scale: 1; }
 }
+
+/* estela del cursor */
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
