@@ -176,6 +176,11 @@
 .card.is-reserved .card__photo img {
   filter: grayscale(0.55) contrast(0.95);
 }
+/* look.vivid: foto con más color, aunque esté reservado */
+.card.is-vivid .card__photo img,
+.card.is-vivid.is-reserved .card__photo img {
+  filter: saturate(1.45) contrast(1.05);
+}
 
 /* =================================================================== */
 /* SNAPSHOT — visor de fotos con foto revelada pegada con cinta          */
